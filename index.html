@@ -5,30 +5,36 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>SingUp Form</title>
     <link rel="stylesheet" href="style.css">
+    <script defer src="index.js"></script>
 </head>
 <body>
-    <div class="container">
+    <div class="container1">
         <h1>Create your account</h1>
         <p>Fill the following information to register yourself on our application</p>
-        <form action="">
+        <form id="form1" action="">
             <div class="fn">
-                <input class="fields" type="text" name="firstName" id="firstName" placeholder="First name*">
-                <p class="error-message">mandatory field</p>
-            </div>
-            <div>
-                <input class="fields" type="text" name="lastName" id="lastName" placeholder="Last name*">
+                <label class="label" for="firstName">First name<span class="mandatory">*</span>:</label>
+                <input class="fields" type="text" name="firstName" id="firstName" placeholder="Sourabh" >
                 <p class="error-message"></p>
             </div>
             <div>
-                <input class="fields" type="email" name="email" id="email" placeholder="Email address*">
+                <label class="label" for="lastName">Last name<span class="mandatory">*</span>:</label>
+                <input class="fields" type="text" name="lastName" id="lastName" placeholder="Khera">
                 <p class="error-message"></p>
             </div>
             <div>
-                <input class="fields" type="tel" name="phone" id="phone" placeholder="Phone number*">
+                <label class="label" for="email">Email Address<span class="mandatory">*</span>:</label>
+                <input class="fields" type="email" name="email" id="email" placeholder="abcd@gmail.com">
+                <p class="error-message"></p>
+            </div>
+            <div>
+                <label class="label" for="phone">Phone number<span class="mandatory">*</span>:</label>
+                <input class="fields" type="tel" name="phone" id="phone" placeholder="9898989898">
                 <p class="error-message"></p>
 
             </div>
             <div class="gender">
+                <label class="Glabel" for="">Gender<span class="mandatory">*</span>:</label>
                 <input type="radio" name="gender" id="Male" value="male">
                 <label for="Male">Male</label>
                 <input type="radio" name="gender" id="Female" value="female">
@@ -36,7 +42,7 @@
                 <p class="error-message"></p>
             </div>
             <div class="Interests">
-                <label for="">Interests:</label>
+                <label class="Glabel" for="">Interests<span class="mandatory">*</span>:</label>
                 <input type="checkbox" name="interest1" id="sports" value="sports">
                 <label for="sports">Sports</label>
                 <input type="checkbox" name="interest2" id="music" value="music">
@@ -47,13 +53,14 @@
                 <label for="politics">Politics</label>
             </div>
             <div class="dob">
-                <label for="dob">DOB<span class="mandatory">*</span>:</label>
+                <label class="Glabel" for="dob">DOB<span class="mandatory">*</span>:</label>
                 <input type="date" name="DOB" id="dob">
                 <p class="error-message"></p>
             </div>
             <div class="city">
-                <label for="city">City<span class="mandatory">*</span>:</label>
+                <label class="Glabel" for="city">City<span class="mandatory">*</span>:</label>
                 <select name="city" id="city">
+                    <option value="">--Select Any City--</option>
                     <option value="New Delhi">New Delhi</option>
                     <option value="Mumbai">Mumbai</option>
                     <option value="Banglore">Banglore</option>
@@ -62,19 +69,25 @@
                 </select>
             </div>
             <div> 
-                <input class="fields" type="text" name="address" id="address" placeholder="Address*">
+                <label class="label" for="address">Address<span class="mandatory">*</span>:</label>
+                <input class="fields" type="text" name="address" id="address" placeholder="f1/1006 mansarover park">
                 <p class="error-message"></p>
             </div>
             <div >
-                <input class="fields" type="password" name="password" id="password" placeholder="Password*">
+                <label class="label" for="password">Password<span class="mandatory">*</span>:</label>
+                <input class="fields" type="password" name="password" id="password" placeholder="********">
                 <p class="error-message"></p>
             </div>
             <div>
-                <input class="fields" type="password" name="confirmPassword" id="confirmPassword" placeholder="Confirm Password*">
+                <label class="label" for="confirmPassword">Confirm password<span class="mandatory">*</span>:</label>
+                <input class="fields" type="password" name="confirmPassword" id="confirmPassword" placeholder="********">
                 <p class="error-message"></p>
             </div>
             <button class="submit" type="submit">Create Account</button>
         </form>
+    </div>
+    <div class="container2">
+
     </div>
 </body>
 </html>

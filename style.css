@@ -7,7 +7,7 @@ body{
     font-family: Arial, sans-serif;
     background-color: #f4f4f4;
     color: #333;
-    font-size: 20px;
+    font-size: 16px;
     line-height: 1.6;
     padding: 20px;
     height: 100vh;
@@ -15,7 +15,7 @@ body{
     align-items: center;
     justify-items: center;
 }
-.container{
+.container1{
     max-width: 450px;
     margin: auto;
     padding: 20px;
@@ -27,7 +27,7 @@ body{
 form{
     display: flex;
     flex-direction: column;
-    gap: 20px;
+    gap: 10px;
     margin-top: 20px;
 }
 input,select,button{
@@ -42,7 +42,7 @@ input,select,button{
 .Interests{
     text-align: start;
     display: flex;
-    gap: 5px;
+    gap: 10px;
 }
 .dob input,.city select{
     width: 100%;
@@ -72,3 +72,18 @@ input:focus,select:focus{
     text-align: left;
     margin-top: 5px;
 }
+.label{
+    display: block;
+    font-size: 16px;
+    font-weight: bold;
+    text-align: start;
+    width: 100%;
+}
+.Glabel{
+    display: block;
+    font-size: 16px;
+    font-weight: bold;
+    text-align: start;
+    width: 20%;
+}
+  
