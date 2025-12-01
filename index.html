@@ -4,24 +4,25 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>SingUp Form</title>
+    <link rel="stylesheet" href="style.css">
 </head>
 <body>
     <div class="container">
         <h1>Create your account</h1>
         <p>Fill the following information to register yourself on our application</p>
         <form action="">
-            <input type="text" name="firstName" id="firstName" placeholder="First name">
-            <input type="text" name="lastName" id="lastName" placeholder="Last name">
-            <input type="email" name="email" id="email" placeholder="Email address">
-            <input type="tel" name="phone" id="phone" placeholder="Phone number">
-            <div>
+            <input type="text" name="firstName" id="firstName" placeholder="First name*">
+            <input type="text" name="lastName" id="lastName" placeholder="Last name*">
+            <input type="email" name="email" id="email" placeholder="Email address*">
+            <input type="tel" name="phone" id="phone" placeholder="Phone number*">
+            <div class="gender">
                 <input type="radio" name="gender" id="Male" value="male">
                 <label for="Male">Male</label>
                 <input type="radio" name="gender" id="Female" value="female">
                 <label for="Female">Female</label>
             </div>
-            <div>
-                <h2>Interests:</h2>
+            <div class="Interests">
+                <label for="">Interests<span class="mandatory">*</span>:</label>
                 <input type="checkbox" name="interest1" id="sports" value="sports">
                 <label for="sports">Sports</label>
                 <input type="checkbox" name="interest2" id="music" value="music">
@@ -31,20 +32,24 @@
                 <input type="checkbox" name="interest4" id="politics" value="politics">
                 <label for="politics">Politics</label>
             </div>
-            <label for="dob">DOB:</label>
-            <input type="date" name="DOB" id="dob">
-            <label for="city">City</label>
-            <select name="city" id="city">
-                <option value="New Delhi">New Delhi</option>
-                <option value="Mumbai">Mumbai</option>
-                <option value="Banglore">Banglore</option>
-                <option value="Chennai">Chennai</option>
-                <option value="Kolkata">Kolkata</option>
-            </select>
-            <input type="text" name="address" id="address" placeholder="Address">
-            <input type="password" name="password" id="password" placeholder="Password">
-            <input type="password" name="confirmPassword" id="confirmPassword" placeholder="Confirm Password">
-            <button type="submit">Create Account</button>
+            <div class="dob">
+                <label for="dob">DOB<span class="mandatory">*</span>:</label>
+                <input type="date" name="DOB" id="dob">
+            </div>
+            <div class="city">
+                <label for="city">City<span class="mandatory">*</span>:</label>
+                <select name="city" id="city">
+                    <option value="New Delhi">New Delhi</option>
+                    <option value="Mumbai">Mumbai</option>
+                    <option value="Banglore">Banglore</option>
+                    <option value="Chennai">Chennai</option>
+                    <option value="Kolkata">Kolkata</option>
+                </select>
+            </div>
+            <input type="text" name="address" id="address" placeholder="Address*">
+            <input type="password" name="password" id="password" placeholder="Password*">
+            <input type="password" name="confirmPassword" id="confirmPassword" placeholder="Confirm Password*">
+            <button class="submit" type="submit">Create Account</button>
         </form>
     </div>
 </body>

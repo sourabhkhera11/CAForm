@@ -1,0 +1,58 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+body{
+    font-family: Arial, sans-serif;
+    background-color: #f4f4f4;
+    color: #333;
+    font-size: 20px;
+    line-height: 1.6;
+    padding: 20px;
+    height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-items: center;
+}
+.container{
+    max-width: 450px;
+    margin: auto;
+    padding: 20px;
+    border-radius: 5px;
+    /* box-shadow: 0 0 10px rgba(0,0,0,0.1); */
+    text-align: center;
+    
+}
+form{
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    margin-top: 20px;
+}
+input,select,button{
+    padding: 12px;
+    border: #dbd6d6 1px solid;
+}
+.gender,.dob,.city{
+    text-align: start;
+    display: flex;
+    gap: 30px;
+}
+.Interests{
+    text-align: start;
+    display: flex;
+    gap: 5px;
+}
+.dob input,.city select{
+    width: 100%;
+}
+.submit{
+    background-color: #5cb85c;
+    color: white;
+    border: none;
+    cursor: pointer;
+}
+.mandatory{
+    color: red;
+}
