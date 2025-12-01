@@ -11,18 +11,32 @@
         <h1>Create your account</h1>
         <p>Fill the following information to register yourself on our application</p>
         <form action="">
-            <input type="text" name="firstName" id="firstName" placeholder="First name*">
-            <input type="text" name="lastName" id="lastName" placeholder="Last name*">
-            <input type="email" name="email" id="email" placeholder="Email address*">
-            <input type="tel" name="phone" id="phone" placeholder="Phone number*">
+            <div class="fn">
+                <input class="fields" type="text" name="firstName" id="firstName" placeholder="First name*">
+                <p class="error-message">mandatory field</p>
+            </div>
+            <div>
+                <input class="fields" type="text" name="lastName" id="lastName" placeholder="Last name*">
+                <p class="error-message"></p>
+            </div>
+            <div>
+                <input class="fields" type="email" name="email" id="email" placeholder="Email address*">
+                <p class="error-message"></p>
+            </div>
+            <div>
+                <input class="fields" type="tel" name="phone" id="phone" placeholder="Phone number*">
+                <p class="error-message"></p>
+
+            </div>
             <div class="gender">
                 <input type="radio" name="gender" id="Male" value="male">
                 <label for="Male">Male</label>
                 <input type="radio" name="gender" id="Female" value="female">
                 <label for="Female">Female</label>
+                <p class="error-message"></p>
             </div>
             <div class="Interests">
-                <label for="">Interests<span class="mandatory">*</span>:</label>
+                <label for="">Interests:</label>
                 <input type="checkbox" name="interest1" id="sports" value="sports">
                 <label for="sports">Sports</label>
                 <input type="checkbox" name="interest2" id="music" value="music">
@@ -35,6 +49,7 @@
             <div class="dob">
                 <label for="dob">DOB<span class="mandatory">*</span>:</label>
                 <input type="date" name="DOB" id="dob">
+                <p class="error-message"></p>
             </div>
             <div class="city">
                 <label for="city">City<span class="mandatory">*</span>:</label>
@@ -46,9 +61,18 @@
                     <option value="Kolkata">Kolkata</option>
                 </select>
             </div>
-            <input type="text" name="address" id="address" placeholder="Address*">
-            <input type="password" name="password" id="password" placeholder="Password*">
-            <input type="password" name="confirmPassword" id="confirmPassword" placeholder="Confirm Password*">
+            <div> 
+                <input class="fields" type="text" name="address" id="address" placeholder="Address*">
+                <p class="error-message"></p>
+            </div>
+            <div >
+                <input class="fields" type="password" name="password" id="password" placeholder="Password*">
+                <p class="error-message"></p>
+            </div>
+            <div>
+                <input class="fields" type="password" name="confirmPassword" id="confirmPassword" placeholder="Confirm Password*">
+                <p class="error-message"></p>
+            </div>
             <button class="submit" type="submit">Create Account</button>
         </form>
     </div>

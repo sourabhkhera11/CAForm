@@ -56,3 +56,19 @@ input,select,button{
 .mandatory{
     color: red;
 }
+input:focus,select:focus{
+    outline: none;
+    border: 2px solid #5cb85c;
+}
+.submit:hover{
+    background-color: #319b31;
+}
+.fields{
+    width: 100%;
+}
+.error-message{
+    font-size: 12px;
+    color: red;
+    text-align: left;
+    margin-top: 5px;
+}
