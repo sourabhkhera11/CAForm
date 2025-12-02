@@ -32,7 +32,7 @@ form{
     gap: 10px;
     margin-top: 20px;
 }
-input,select,button{
+input,select,button,textarea{
     padding: 12px;
     border: #dbd6d6 1px solid;
 }
@@ -58,7 +58,7 @@ input,select,button{
 .mandatory{
     color: red;
 }
-input:focus,select:focus{
+input:focus,select:focus,textarea:focus{
     outline: none;
     border: 2px solid #5cb85c;
 }

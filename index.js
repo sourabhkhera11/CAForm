@@ -8,7 +8,7 @@ form.addEventListener('submit', (e) => {
 
     const data = new FormData(form);
     let entry = {};
-
+    console.log(data.entries());
     for (let [name, value] of data.entries()) {
         entry[name] = value;
     }
