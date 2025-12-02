@@ -4,95 +4,106 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>SingUp Form</title>
+    <style>
+@import url('https://fonts.googleapis.com/css2?family=Jost:ital,wght@0,100..900;1,100..900&family=Lato:ital,wght@0,100;0,300;0,400;0,700;0,900;1,100;1,300;1,400;1,700;1,900&family=Roboto:ital,wght@0,100..900;1,100..900&display=swap');
+</style>
     <link rel="stylesheet" href="style.css">
     <script defer src="index.js"></script>
 </head>
 <body>
     <section class="formSection">
         <div class="container1">
-            <h1>Create your account</h1>
+            <h1>Create Your Account</h1>
             <p>Fill the following information to register yourself on our application</p>
             <form id="form1" action="">
-                <div class="firstName">
-                    <label class="label" for="firstName">First name<span class="mandatory">*</span>:</label>
-                    <input oninput="validFirstName()" class="fields" type="text" name="firstName" id="firstName" placeholder="Sourabh" >
-                    <p class="error-message"></p>
+                <div class="sec1">
+                    <div class="firstName">
+                        <label class="label" for="firstName">First Name<span class="mandatory">*</span>:</label>
+                        <input oninput="validFirstName()" class="fields" type="text" name="firstName" id="firstName" placeholder="Input Your First Name" >
+                        <p class="error-message"></p>
+                    </div>
+                    <div class="lastName">
+                        <label class="label" for="lastName">Last Name<span class="mandatory">*</span>:</label>
+                        <input oninput="validLastName()" class="fields" type="text" name="lastName" id="lastName" placeholder="Input Your Last Name">
+                        <p class="error-message"></p>
+                    </div>
                 </div>
-                <div class="lastName">
-                    <label class="label" for="lastName">Last name<span class="mandatory">*</span>:</label>
-                    <input oninput="validLastName()" class="fields" type="text" name="lastName" id="lastName" placeholder="Khera">
-                    <p class="error-message"></p>
-                </div>
-                <div class="email">
-                    <label class="label" for="email">Email Address<span class="mandatory">*</span>:</label>
-                    <input oninput=" validateEmail()" class="fields" type="text" name="email" id="email" placeholder="abcd@gmail.com">
-                    <p class="error-message"></p>
-                </div>
-                <div class="phone">
-                    <label class="label" for="phone">Phone number<span class="mandatory">*</span>:</label>
-                    <input oninput="validatePhone()" class="fields" type="tel" name="phone" id="phone" placeholder="9898989898">
-                    <p class="error-message"></p>
-    
+                <div class="sec2">
+                    <div class="email">
+                        <label class="label" for="email">Email Address<span class="mandatory">*</span>:</label>
+                        <input onblur=" validateEmail()" class="fields" type="text" name="email" id="email" placeholder="Input Your Email Address">
+                        <p class="error-message"></p>
+                    </div>
+                    <div class="phone">
+                        <label class="label" for="phone">Phone Number<span class="mandatory">*</span>:</label>
+                        <input onblur="validatePhone()" class="fields" type="tel" name="phone" id="phone" placeholder="Input Your Phone Number">
+                        <p class="error-message"></p>
+        
+                    </div>
                 </div>
                 <div class="gender">
                     <div class="genC">
                         <label  class="Glabel" for="">Gender<span class="mandatory">*</span>:</label>
-                        <input type="radio" name="gender" id="Male" value="male">
-                        <label for="Male">Male</label>
-                        <input type="radio" name="gender" id="Female" value="female">
-                        <label for="Female">Female</label>
+                        <input  type="radio" name="gender" id="Male" value="male">
+                        <label class="left" for="Male">Male</label>
+                        <input class="gap" type="radio" name="gender" id="Female" value="female">
+                        <label class="left" for="Female">Female</label>
                     </div>
                     <p class="error-message"></p>
                 </div>
                 <div class="Interests">
                     <div class="interestsC">
                         <label class="Glabel" for="">Interests<span class="mandatory">*</span>:</label>
-                        <input type="checkbox" name="interest1" id="sports" value="sports">
-                        <label for="sports">Sports</label>
-                        <input type="checkbox" name="interest2" id="music" value="music">
-                        <label for="music">Music</label>
-                        <input type="checkbox" name="interest3" id="movies" value="movies">
-                        <label for="movies">Movies</label>
-                        <input type="checkbox" name="interest4" id="politics" value="politics">
-                        <label for="politics">Politics</label>
+                        <input   onclick="validateInterests()" type="checkbox" name="interest1" id="sports" value="sports">
+                        <label class="left" for="sports">Sports</label>
+                        <input class="gap" onclick="validateInterests()" type="checkbox" name="interest2" id="music" value="music">
+                        <label class="left" for="music">Music</label>
+                        <input class="gap" onclick="validateInterests()" type="checkbox" name="interest3" id="movies" value="movies">
+                        <label class="left" for="movies">Movies</label>
+                        <input class="gap" onclick="validateInterests()" type="checkbox" name="interest4" id="politics" value="politics">
+                        <label class="left"  for="politics">Politics</label>
                     </div>
                     <p class="error-message"></p>
                 </div>
-                <div class="dob">
-                    <div class="dobC">
-                        <label class="Glabel" for="dob">DOB<span class="mandatory">*</span>:</label>
-                        <input oninput="validateDob()" class="fields" type="date" name="DOB" id="dob">
+                <div class="sec3">
+                    <div class="dob">
+                        <div class="dobC">
+                            <label class="Glabel" for="dob">DOB<span class="mandatory">*</span>:</label>
+                            <input oninput="validateDob()" class="fields" type="date" name="DOB" id="dob">
+                        </div>
+                        <p class="error-message"></p>
                     </div>
-                    <p class="error-message"></p>
-                </div>
-                <div class="city">
-                    <div  class="cityC">
-                        <label class="Glabel" for="city">City<span class="mandatory">*</span>:</label>
-                        <select onblur="validateCity()" oninput="validateCity()" name="city" id="city">
-                            <option value="">--Select Any City--</option>
-                            <option value="New Delhi">New Delhi</option>
-                            <option value="Mumbai">Mumbai</option>
-                            <option value="Banglore">Banglore</option>
-                            <option value="Chennai">Chennai</option>
-                            <option value="Kolkata">Kolkata</option>
-                        </select>
+                    <div class="city">
+                        <div  class="cityC">
+                            <label class="Glabel" for="city">City<span class="mandatory">*</span>:</label>
+                            <select onblur="validateCity()" oninput="validateCity()" name="city" id="city">
+                                <option value="">Select Your City</option>
+                                <option value="New Delhi">New Delhi</option>
+                                <option value="Mumbai">Mumbai</option>
+                                <option value="Banglore">Banglore</option>
+                                <option value="Chennai">Chennai</option>
+                                <option value="Kolkata">Kolkata</option>
+                            </select>
+                        </div>
+                        <p class="error-message"></p>
                     </div>
-                    <p class="error-message"></p>
                 </div>
                 <div class="address"> 
                     <label class="label" for="address">Address<span class="mandatory">*</span>:</label>
-                    <textarea oninput="validateAdress()" class="fields" name="address" id="address" placeholder="f1/1006 mansarover park"></textarea>
+                    <textarea rows="8" oninput="validateAdress()" class="fields" name="address" id="address" placeholder="Input Your Street Address"></textarea>
                     <p class="error-message"></p>
                 </div>
-                <div class="password">
-                    <label class="label" for="password">Password<span class="mandatory">*</span>:</label>
-                    <input oninput=" validateRightPassword()" class="fields" type="password" name="password" id="password" placeholder="********">
-                    <p class="error-message"></p>
-                </div>
-                <div class="confirmPassword">
-                    <label class="label" for="confirmPassword">Confirm password<span class="mandatory">*</span>:</label>
-                    <input oninput="validatePassword()"  class="fields" type="password" name="confirmPassword" id="confirmPassword" placeholder="********">
-                    <p class="error-message"></p>
+                <div class="sec4">
+                    <div class="password">
+                        <label class="label" for="password">Password<span class="mandatory">*</span>:</label>
+                        <input oninput=" validateRightPassword()" class="fields" type="password" name="password" id="password" placeholder="Input Your Password ">
+                        <p class="error-message"></p>
+                    </div>
+                    <div class="confirmPassword">
+                        <label class="label" for="confirmPassword">Confirm Password<span class="mandatory">*</span>:</label>
+                        <input oninput="validatePassword()" onblur="validatePassword()"  class="fields" type="password" name="confirmPassword" id="confirmPassword" placeholder="Re-Enter Your Password ">
+                        <p class="error-message"></p>
+                    </div>
                 </div>
                 <button class="submit" type="submit">Create Account</button>
             </form>

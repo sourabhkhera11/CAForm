@@ -252,14 +252,17 @@ function validatePassword(){
     if(passwordInput.value===""){
         errorMessage.innerText="This field is required.";
         confirmPasswordInput.style.borderColor="red";
+        errorMessage.style.color="red";
         return false;
     }
     if(passwordInput.value!==confirmPasswordInput.value){
         errorMessage.innerText="Passwords do not match.";
+        errorMessage.style.color="red";
         confirmPasswordInput.style.borderColor="red";
         return false;
     }else{
-        errorMessage.innerText="";
+        errorMessage.innerText="Passwords match.";
+        errorMessage.style.color="#5cb85c";
         confirmPasswordInput.style.borderColor="#5cb85c";
         return true;
     }

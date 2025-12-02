@@ -4,7 +4,7 @@
     box-sizing: border-box;
 }
 body{
-    font-family: Arial, sans-serif;
+    font-family: "Lato", sans-serif;
     background-color: #f4f4f4;
     color: #333;
     font-size: 16px;
@@ -12,19 +12,20 @@ body{
     padding: 20px;
 }
 .formSection{
-    height: 100vh;
+    height: 100vh;;
+    width: 100%;
     display: flex;
     align-items: center;
     justify-items: center;
 }
 .container1{
-    max-width: 500px;
+    width: 800px;
     margin: auto;
-    padding: 20px;
-    border-radius: 5px;
-    /* box-shadow: 0 0 10px rgba(0,0,0,0.1); */
+    padding: 50px;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0,0,0,0.1);
     text-align: center;
-    
+    background-color: #fff;
 }
 form{
     display: flex;
@@ -40,12 +41,13 @@ input,select,button,textarea{
     text-align: start;
     display: flex;
     align-items: center;
-    gap: 30px;
+}
+.genC #Male{
+    text-align: start;
 }
 .interestsC{
     text-align: start;
     display: flex;
-    gap: 10px;
 }
 .dob input,.city select{
     width: 100%;
@@ -120,4 +122,17 @@ th{
 tr:nth-child(even){
     background-color: #808080;
     color: #fff;
+}
+.firstName,.lastName,.email,.phone,.dob,.city,.password,.confirmPassword{
+    flex-basis: 50%;
+}
+.sec1,.sec2,.sec3,.sec4{
+    display: flex;
+    gap: 20px;
+}
+.left{
+    margin-left: 20px;
+}
+.gap{
+    margin-left: 30px;
 }
