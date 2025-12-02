@@ -36,12 +36,13 @@ input,select,button,textarea{
     padding: 12px;
     border: #dbd6d6 1px solid;
 }
-.gender,.dob,.city{
+.genC,.dobC,.cityC{
     text-align: start;
     display: flex;
+    align-items: center;
     gap: 30px;
 }
-.Interests{
+.interestsC{
     text-align: start;
     display: flex;
     gap: 10px;
@@ -102,4 +103,7 @@ table,tr,th,td{
 }
 .row{
     display: none;
+}
+.container2{
+    margin-top: 200px;
 }
