@@ -12,6 +12,7 @@ body{
     padding: 20px;
     margin: 0;
     padding: 0;
+    background-image: url("./public/background2.jpg");
 }
 .formSection{
     margin: 0;
@@ -21,7 +22,7 @@ body{
     display: flex;
     align-items: center;
     justify-items: center;
-    background-image: url("./public/background2.jpg");
+    
 }
 .container1{
     width: 800px;
@@ -123,8 +124,12 @@ th{
     display: none;
 }
 .container2{
-    margin-top: 200px;;
+    margin: 200px;;
     /* background-image: url("./public/background3.jpg"); */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
 }
 tr:nth-child(even){
     background-color: #d4d4d4;
@@ -166,4 +171,7 @@ input[type="date"]::-webkit-calendar-picker-indicator {
     gap: 10px;
     justify-content: center;
     text-align: center;
+}
+.editButton,.deleteButton{
+    cursor: pointer;
 }

@@ -272,6 +272,33 @@ function validatePassword(){
     }
 }
 
+function deleteRow(event){
+    const rowid=event.target.closest("tr").id;
+    const row=document.getElementById(rowid);
+    row.remove();
+    if(rowid!=-1){
+        formData.splice(rowid,1);
+    }
+}
+function editRow(event){
+    const rowid=event.target.closest("tr").id;
+    const row=document.getElementById(rowid);
+    const entry=formData[rowid];
+    console.log(entry);
+    // console.log(row.querySelector(".firstNamee").innerHTML);
+    console.log(entry.firstName);
+    document.getElementById("firstName").value=entry.firstName;
+    document.getElementById("lastName").value=entry.lastName;
+    document.getElementById("email").value=entry.email;
+    document.getElementById("phone").value=entry.phone;
+    document.getElementById("dob").value=entry.DOB;
+    document.getElementById("city").value=entry.city;
+    document.getElementById("address").value=entry.address;
+    document.getElementById("password").value=entry.password;
+    document.getElementById("confirmPassword").value=entry.password;
+    scrollToSection("formSection");
+}
+
 
 // console.log("Before timeout");
 // setTimeout(() => {
