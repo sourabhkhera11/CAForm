@@ -3,58 +3,49 @@ const form = document.getElementById('form1');
 
 form.addEventListener('submit', (e) => {
     e.preventDefault();
-
-    alert("Form submitted successfully!");
-
-    const data = new FormData(form);
-    let entry = {};
-    console.log(data.entries());
-    for (let [name, value] of data.entries()) {
-        entry[name] = value;
+    if(validFirstName() && validLastName() && validateEmail() && validatePhone() && validateGender() && validateInterests() && validateDob() && validateCity() && validateAdress() && validateRightPassword() && validatePassword()){
+        
+        alert("Form submitted successfully!");
+    
+        const data = new FormData(form);
+        let entry = {};
+        console.log(data.entries());
+        for (let [name, value] of data.entries()) {
+            entry[name] = value;
+        }
+    
+        formData.push(entry);
+    
+        const Interests = [
+            entry.interest1,
+            entry.interest2,
+            entry.interest3,
+            entry.interest4
+        ].filter(Boolean).join(", ");
+    
+        const table = document.getElementById('dataTable');
+        const original = document.getElementById('-2');
+        const clone = original.cloneNode(true);
+    
+        clone.id = formData.length - 1;
+        clone.style.display = 'table-row'; 
+    
+        clone.querySelector(".firstNamee").innerText = entry.firstName.trim();
+        clone.querySelector(".lastNamee").innerText = entry.lastName.trim();
+        clone.querySelector(".emaill").innerText = entry.email.trim();
+        clone.querySelector(".phonee").innerText = entry.phone.trim();
+        clone.querySelector(".genderr").innerText = entry.gender;
+        clone.querySelector(".Interestss").innerText = Interests;
+        clone.querySelector(".dobb").innerText = entry.DOB.trim();  
+        clone.querySelector(".cityy").innerText = entry.city.trim();
+        clone.querySelector(".addresss").innerText = entry.address.trim();
+        clone.querySelector(".passwordd").innerText = entry.password.trim();
+    
+        table.appendChild(clone);
+        form.reset();
     }
-
-    formData.push(entry);
-
-    const Interests = [
-        entry.interest1,
-        entry.interest2,
-        entry.interest3,
-        entry.interest4
-    ].filter(Boolean).join(", ");
-
-    const table = document.getElementById('dataTable');
-    const original = document.getElementById('-2');
-    const clone = original.cloneNode(true);
-
-    clone.id = formData.length - 1;
-    clone.style.display = 'table-row'; 
-
-    clone.querySelector(".firstNamee").innerText = entry.firstName.trim();
-    clone.querySelector(".lastNamee").innerText = entry.lastName.trim();
-    clone.querySelector(".emaill").innerText = entry.email.trim();
-    clone.querySelector(".phonee").innerText = entry.phone.trim();
-    clone.querySelector(".genderr").innerText = entry.gender;
-    clone.querySelector(".Interestss").innerText = Interests;
-    clone.querySelector(".dobb").innerText = entry.DOB.trim();  
-    clone.querySelector(".cityy").innerText = entry.city.trim();
-    clone.querySelector(".addresss").innerText = entry.address.trim();
-    clone.querySelector(".passwordd").innerText = entry.password.trim();
-
-    table.appendChild(clone);
-    form.reset();
 });
 
-function validateEmpty(event){
-    const inputValue = event.target.value.trim();
-    if(inputValue === ""){
-        event.target.nextElementSibling.innerText = "This field is required.";
-        event.target.style.borderColor = "red";
-    }else{
-        event.target.nextElementSibling.innerText = "";
-        event.target.style.borderColor = "#5cb85c";
-
-    }
-}
 function validateAdress(){
     const addressInput=document.getElementById("address");
     const addressValue=addressInput.value.trim();
@@ -112,39 +103,42 @@ function validLastName(){
     }
 }
 function validateEmail(){
-    const emailValue = document.getElementById("email").value.trim();
+    const emailInput=document.getElementById("email");
+    const emailValue = emailInput.value.trim();
+    const errorMessage=document.querySelector(".email .error-message");
     const emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
     if(emailValue === ""){
-        event.target.nextElementSibling.innerText = "This field is required.";
-        event.target.style.borderColor = "red";
+        errorMessage.innerText = "This field is required.";
+        emailInput.style.borderColor = "red";
         return false;
     }
     if(!emailPattern.test(emailValue)){
-        event.target.nextElementSibling.innerText = "Please enter a valid email address.";
-        event.target.style.borderColor = "red";
+        errorMessage.innerText = "Please enter a valid email address.";
+        emailInput.style.borderColor = "red";
         return false;
     }else{
-        event.target.nextElementSibling.innerText = "";
-        event.target.style.borderColor = "#5cb85c";
+        errorMessage.innerText = "";
+        emailInput.style.borderColor = "#5cb85c";
         return true;
     }
 }
 
 function validatePhone(){
-    const phoneValue = document.getElementById("phone").value.trim();
+    const phoneInput=document.getElementById("phone");
+    const phoneValue = phoneInput.value.trim();
     const phonePattern = /^\d{10}$/;
     if(phoneValue === ""){
-        event.target.nextElementSibling.innerText = "This field is required.";
-        event.target.style.borderColor = "red";
+        phoneInput.nextElementSibling.innerText = "This field is required.";
+        phoneInput.style.borderColor = "red";
         return false;
     }
     if(!phonePattern.test(phoneValue)){
-        event.target.nextElementSibling.innerText = "Please enter a valid 10-digit phone number.";
-        event.target.style.borderColor = "red";
+        phoneInput.nextElementSibling.innerText = "Please enter a valid 10-digit phone number.";
+        phoneInput.style.borderColor = "red";
         return false;
     }else{
-        event.target.nextElementSibling.innerText = "";
-        event.target.style.borderColor = "#5cb85c";
+        phoneInput.nextElementSibling.innerText = "";
+        phoneInput.style.borderColor = "#5cb85c";
         return true;
     }
 }
@@ -262,6 +256,8 @@ function validatePassword(){
         return true;
     }
 }
+
+
 // console.log("Before timeout");
 // setTimeout(() => {
 //     console.log("Hello after 2 seconds");
