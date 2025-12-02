@@ -96,14 +96,28 @@ table{
     border-collapse: collapse;
     width: 100%;
 }
-table,tr,th,td{
+table{
     border: #000 2px solid;
+    border-radius: 5px;
+}
+th,td{
+    border-top: #000 1px solid;
+    border-bottom: #000 1px solid;
     padding: 5px;
     text-align: center;
+}
+th{
+    background-color: #808080;
+    padding: 20px;
+    color: #fff;
 }
 .row{
     display: none;
 }
 .container2{
     margin-top: 200px;
+}
+tr:nth-child(even){
+    background-color: #808080;
+    color: #fff;
 }
