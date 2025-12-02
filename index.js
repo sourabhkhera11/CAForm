@@ -55,28 +55,97 @@ function validateEmpty(event){
 
     }
 }
-
-function validateEmail(event){
-    const emailValue = event.target.value.trim();
+function validateAdress(){
+    const addressInput=document.getElementById("address");
+    const addressValue=addressInput.value.trim();
+    const errorMessage=addressInput.nextElementSibling;
+    if(addressValue===""){
+        errorMessage.innerText="This field is required.";
+        addressInput.style.borderColor="red";
+        return false;
+    }else{
+        errorMessage.innerText="";
+        addressInput.style.borderColor="#5cb85c";
+        return true;
+    }
+}
+function validFirstName(){
+    const nameInput=document.getElementById("firstName");
+    const nameValue=nameInput.value.trim();
+    const errorMessage=nameInput.nextElementSibling;
+    const namePattern=/^[A-Za-z]+$/;
+    if(nameValue === ""){
+        errorMessage.innerText = "This field is required.";
+        nameInput.style.borderColor = "red";
+        return false;
+    }
+    else if(!namePattern.test(nameValue)){ 
+        errorMessage.innerText = "Name should contain only alphabets.";
+        nameInput.style.borderColor = "red";
+        return false;
+    }
+    else{
+        errorMessage.innerText = "";
+        nameInput.style.borderColor = "#5cb85c";
+        return true;
+    }
+}
+function validLastName(){
+    const nameInput=document.getElementById("lastName");
+    const nameValue=nameInput.value.trim();
+    const errorMessage=nameInput.nextElementSibling;
+    const namePattern=/^[A-Za-z]+$/;
+    if(nameValue === ""){
+        errorMessage.innerText = "This field is required.";
+        nameInput.style.borderColor = "red";
+        return false;
+    }
+    else if(!namePattern.test(nameValue)){ 
+        errorMessage.innerText = "Name should contain only alphabets.";
+        nameInput.style.borderColor = "red";
+        return false;
+    }
+    else{
+        errorMessage.innerText = "";
+        nameInput.style.borderColor = "#5cb85c";
+        return true;
+    }
+}
+function validateEmail(){
+    const emailValue = document.getElementById("email").value.trim();
     const emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+    if(emailValue === ""){
+        event.target.nextElementSibling.innerText = "This field is required.";
+        event.target.style.borderColor = "red";
+        return false;
+    }
     if(!emailPattern.test(emailValue)){
         event.target.nextElementSibling.innerText = "Please enter a valid email address.";
         event.target.style.borderColor = "red";
+        return false;
     }else{
         event.target.nextElementSibling.innerText = "";
         event.target.style.borderColor = "#5cb85c";
+        return true;
     }
 }
 
-function validatePhone(event){
-    const phoneValue = event.target.value.trim();
+function validatePhone(){
+    const phoneValue = document.getElementById("phone").value.trim();
     const phonePattern = /^\d{10}$/;
+    if(phoneValue === ""){
+        event.target.nextElementSibling.innerText = "This field is required.";
+        event.target.style.borderColor = "red";
+        return false;
+    }
     if(!phonePattern.test(phoneValue)){
         event.target.nextElementSibling.innerText = "Please enter a valid 10-digit phone number.";
         event.target.style.borderColor = "red";
+        return false;
     }else{
         event.target.nextElementSibling.innerText = "";
         event.target.style.borderColor = "#5cb85c";
+        return true;
     }
 }
 function validateGender() {
@@ -157,8 +226,41 @@ function validateCity(){
         return true;
     }
 }
+function validateRightPassword(){
+    const passwordInput=document.getElementById("password");
+    const passwordValue=passwordInput.value.trim();
+    const errorMessage=passwordInput.nextElementSibling;
+
+    const passwordPattern=/^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{8,}$/;
+    if(passwordValue===""){
+        errorMessage.innerText="This field is required.";
+        passwordInput.style.borderColor="red";
+        return false;
+    }
+    if(!passwordPattern.test(passwordValue)){
+        errorMessage.innerText="Password must be at least 8 characters long and include uppercase, lowercase, number, and special character.";
+        passwordInput.style.borderColor="red";
+        return false;
+    }else{
+        errorMessage.innerText="";
+        passwordInput.style.borderColor="#5cb85c";
+        return true;
+    }
+}
 function validatePassword(){
     const passwordInput=document.getElementById("password");
+    const confirmPasswordInput=document.getElementById("confirmPassword");
+    const errorMessage=confirmPasswordInput.nextElementSibling;
+
+    if(passwordInput.value!==confirmPasswordInput.value){
+        errorMessage.innerText="Passwords do not match.";
+        confirmPasswordInput.style.borderColor="red";
+        return false;
+    }else{
+        errorMessage.innerText="";
+        confirmPasswordInput.style.borderColor="#5cb85c";
+        return true;
+    }
 }
 // console.log("Before timeout");
 // setTimeout(() => {

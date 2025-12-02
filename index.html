@@ -15,22 +15,22 @@
             <form id="form1" action="">
                 <div class="firstName">
                     <label class="label" for="firstName">First name<span class="mandatory">*</span>:</label>
-                    <input onblur="validateEmpty(event)" class="fields" type="text" name="firstName" id="firstName" placeholder="Sourabh" >
+                    <input onblur="validFirstName()" class="fields" type="text" name="firstName" id="firstName" placeholder="Sourabh" >
                     <p class="error-message"></p>
                 </div>
                 <div class="lastName">
                     <label class="label" for="lastName">Last name<span class="mandatory">*</span>:</label>
-                    <input onblur="validateEmpty(event)" class="fields" type="text" name="lastName" id="lastName" placeholder="Khera">
+                    <input onblur="validLastName()" class="fields" type="text" name="lastName" id="lastName" placeholder="Khera">
                     <p class="error-message"></p>
                 </div>
                 <div class="email">
                     <label class="label" for="email">Email Address<span class="mandatory">*</span>:</label>
-                    <input onblur="validateEmpty(event), validateEmail(event)" class="fields" type="text" name="email" id="email" placeholder="abcd@gmail.com">
+                    <input onblur=" validateEmail()" class="fields" type="text" name="email" id="email" placeholder="abcd@gmail.com">
                     <p class="error-message"></p>
                 </div>
                 <div class="phone">
                     <label class="label" for="phone">Phone number<span class="mandatory">*</span>:</label>
-                    <input onblur="validateEmpty(event), validatePhone(event)" class="fields" type="tel" name="phone" id="phone" placeholder="9898989898">
+                    <input onblur="validatePhone()" class="fields" type="tel" name="phone" id="phone" placeholder="9898989898">
                     <p class="error-message"></p>
     
                 </div>
@@ -81,17 +81,17 @@
                 </div>
                 <div class="address"> 
                     <label class="label" for="address">Address<span class="mandatory">*</span>:</label>
-                    <textarea onblur="validateEmpty(event)" class="fields" name="address" id="address" placeholder="f1/1006 mansarover park"></textarea>
+                    <textarea onblur="validateAdress()" class="fields" name="address" id="address" placeholder="f1/1006 mansarover park"></textarea>
                     <p class="error-message"></p>
                 </div>
                 <div class="password">
                     <label class="label" for="password">Password<span class="mandatory">*</span>:</label>
-                    <input onblur="validateEmpty(event)" class="fields" type="password" name="password" id="password" placeholder="********">
+                    <input onblur=" validateRightPassword()" class="fields" type="password" name="password" id="password" placeholder="********">
                     <p class="error-message"></p>
                 </div>
                 <div class="confirmPassword">
                     <label class="label" for="confirmPassword">Confirm password<span class="mandatory">*</span>:</label>
-                    <input onclick="validateEmpty(event)" class="fields" type="password" name="confirmPassword" id="confirmPassword" placeholder="********">
+                    <input onblur="validatePassword()"  class="fields" type="password" name="confirmPassword" id="confirmPassword" placeholder="********">
                     <p class="error-message"></p>
                 </div>
                 <button class="submit" type="submit">Create Account</button>
