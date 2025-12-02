@@ -8,86 +8,125 @@
     <script defer src="index.js"></script>
 </head>
 <body>
-    <div class="container1">
-        <h1>Create your account</h1>
-        <p>Fill the following information to register yourself on our application</p>
-        <form id="form1" action="">
-            <div class="fn">
-                <label class="label" for="firstName">First name<span class="mandatory">*</span>:</label>
-                <input class="fields" type="text" name="firstName" id="firstName" placeholder="Sourabh" >
-                <p class="error-message"></p>
-            </div>
-            <div>
-                <label class="label" for="lastName">Last name<span class="mandatory">*</span>:</label>
-                <input class="fields" type="text" name="lastName" id="lastName" placeholder="Khera">
-                <p class="error-message"></p>
-            </div>
-            <div>
-                <label class="label" for="email">Email Address<span class="mandatory">*</span>:</label>
-                <input class="fields" type="email" name="email" id="email" placeholder="abcd@gmail.com">
-                <p class="error-message"></p>
-            </div>
-            <div>
-                <label class="label" for="phone">Phone number<span class="mandatory">*</span>:</label>
-                <input class="fields" type="tel" name="phone" id="phone" placeholder="9898989898">
-                <p class="error-message"></p>
-
-            </div>
-            <div class="gender">
-                <label class="Glabel" for="">Gender<span class="mandatory">*</span>:</label>
-                <input type="radio" name="gender" id="Male" value="male">
-                <label for="Male">Male</label>
-                <input type="radio" name="gender" id="Female" value="female">
-                <label for="Female">Female</label>
-                <p class="error-message"></p>
-            </div>
-            <div class="Interests">
-                <label class="Glabel" for="">Interests<span class="mandatory">*</span>:</label>
-                <input type="checkbox" name="interest1" id="sports" value="sports">
-                <label for="sports">Sports</label>
-                <input type="checkbox" name="interest2" id="music" value="music">
-                <label for="music">Music</label>
-                <input type="checkbox" name="interest3" id="movies" value="movies">
-                <label for="movies">Movies</label>
-                <input type="checkbox" name="interest4" id="politics" value="politics">
-                <label for="politics">Politics</label>
-            </div>
-            <div class="dob">
-                <label class="Glabel" for="dob">DOB<span class="mandatory">*</span>:</label>
-                <input type="date" name="DOB" id="dob">
-                <p class="error-message"></p>
-            </div>
-            <div class="city">
-                <label class="Glabel" for="city">City<span class="mandatory">*</span>:</label>
-                <select name="city" id="city">
-                    <option value="">--Select Any City--</option>
-                    <option value="New Delhi">New Delhi</option>
-                    <option value="Mumbai">Mumbai</option>
-                    <option value="Banglore">Banglore</option>
-                    <option value="Chennai">Chennai</option>
-                    <option value="Kolkata">Kolkata</option>
-                </select>
-            </div>
-            <div> 
-                <label class="label" for="address">Address<span class="mandatory">*</span>:</label>
-                <input class="fields" type="text" name="address" id="address" placeholder="f1/1006 mansarover park">
-                <p class="error-message"></p>
-            </div>
-            <div >
-                <label class="label" for="password">Password<span class="mandatory">*</span>:</label>
-                <input class="fields" type="password" name="password" id="password" placeholder="********">
-                <p class="error-message"></p>
-            </div>
-            <div>
-                <label class="label" for="confirmPassword">Confirm password<span class="mandatory">*</span>:</label>
-                <input class="fields" type="password" name="confirmPassword" id="confirmPassword" placeholder="********">
-                <p class="error-message"></p>
-            </div>
-            <button class="submit" type="submit">Create Account</button>
-        </form>
-    </div>
+    <section class="formSection">
+        <div class="container1">
+            <h1>Create your account</h1>
+            <p>Fill the following information to register yourself on our application</p>
+            <form id="form1" action="">
+                <div class="fn">
+                    <label class="label" for="firstName">First name<span class="mandatory">*</span>:</label>
+                    <input class="fields" type="text" name="firstName" id="firstName" placeholder="Sourabh" >
+                    <p class="error-message"></p>
+                </div>
+                <div>
+                    <label class="label" for="lastName">Last name<span class="mandatory">*</span>:</label>
+                    <input class="fields" type="text" name="lastName" id="lastName" placeholder="Khera">
+                    <p class="error-message"></p>
+                </div>
+                <div>
+                    <label class="label" for="email">Email Address<span class="mandatory">*</span>:</label>
+                    <input class="fields" type="email" name="email" id="email" placeholder="abcd@gmail.com">
+                    <p class="error-message"></p>
+                </div>
+                <div>
+                    <label class="label" for="phone">Phone number<span class="mandatory">*</span>:</label>
+                    <input class="fields" type="tel" name="phone" id="phone" placeholder="9898989898">
+                    <p class="error-message"></p>
+    
+                </div>
+                <div class="gender">
+                    <label class="Glabel" for="">Gender<span class="mandatory">*</span>:</label>
+                    <input type="radio" name="gender" id="Male" value="male">
+                    <label for="Male">Male</label>
+                    <input type="radio" name="gender" id="Female" value="female">
+                    <label for="Female">Female</label>
+                    <p class="error-message"></p>
+                </div>
+                <div class="Interests">
+                    <label class="Glabel" for="">Interests<span class="mandatory">*</span>:</label>
+                    <input type="checkbox" name="interest1" id="sports" value="sports">
+                    <label for="sports">Sports</label>
+                    <input type="checkbox" name="interest2" id="music" value="music">
+                    <label for="music">Music</label>
+                    <input type="checkbox" name="interest3" id="movies" value="movies">
+                    <label for="movies">Movies</label>
+                    <input type="checkbox" name="interest4" id="politics" value="politics">
+                    <label for="politics">Politics</label>
+                </div>
+                <div class="dob">
+                    <label class="Glabel" for="dob">DOB<span class="mandatory">*</span>:</label>
+                    <input type="date" name="DOB" id="dob">
+                    <p class="error-message"></p>
+                </div>
+                <div class="city">
+                    <label class="Glabel" for="city">City<span class="mandatory">*</span>:</label>
+                    <select name="city" id="city">
+                        <option value="">--Select Any City--</option>
+                        <option value="New Delhi">New Delhi</option>
+                        <option value="Mumbai">Mumbai</option>
+                        <option value="Banglore">Banglore</option>
+                        <option value="Chennai">Chennai</option>
+                        <option value="Kolkata">Kolkata</option>
+                    </select>
+                </div>
+                <div> 
+                    <label class="label" for="address">Address<span class="mandatory">*</span>:</label>
+                    <input class="fields" type="text" name="address" id="address" placeholder="f1/1006 mansarover park">
+                    <p class="error-message"></p>
+                </div>
+                <div >
+                    <label class="label" for="password">Password<span class="mandatory">*</span>:</label>
+                    <input class="fields" type="password" name="password" id="password" placeholder="********">
+                    <p class="error-message"></p>
+                </div>
+                <div>
+                    <label class="label" for="confirmPassword">Confirm password<span class="mandatory">*</span>:</label>
+                    <input class="fields" type="password" name="confirmPassword" id="confirmPassword" placeholder="********">
+                    <p class="error-message"></p>
+                </div>
+                <button class="submit" type="submit">Create Account</button>
+            </form>
+        </div>
+    </section>
     <div class="container2">
-
+        <table id="dataTable">
+            <tr>
+                <th class="">FirstName</th>
+                <th class="">LastName</th>
+                <th class="">Email</th>
+                <th class="">Phone</th>
+                <th class="">Gender</th>
+                <th class="">Interests</th>
+                <th class="">DOB</th>
+                <th class="">City</th>
+                <th class="">Address</th>
+                <th class="">Password</th>   
+            </tr>
+            <tr id="-2" class="row">
+                <td class="firstNamee"></td>
+                <td class="lastNamee"></td>
+                <td class="emaill"></td>
+                <td class="phonee"></td>
+                <td class="genderr"></td>
+                <td class="Interestss"></td>
+                <td class="dobb"></td>
+                <td class="cityy"></td>
+                <td class="addresss"></td>
+                <td class="passwordd"></td>
+            </tr>
+            <tr id="-1">
+                <td class="firstNamee">Sourabh</td>
+                <td class="lastNamee">Khera</td>
+                <td class="emaill">abcd@gmail.com</td>
+                <td class="phonee">8700134518</td>
+                <td class="genderr">Male</td>
+                <td class="Interestss">Sports, Music, movies, politics</td>
+                <td class="dobb">31/10/2003</td>
+                <td class="cityy">New delhi</td>
+                <td class="addresss">F1/1006</td>
+                <td class="passwordd">qwruifb</td>
+            </tr>
+        </table>
     </div>
 </body>
 </html>

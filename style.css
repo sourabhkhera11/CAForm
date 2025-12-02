@@ -10,6 +10,8 @@ body{
     font-size: 16px;
     line-height: 1.6;
     padding: 20px;
+}
+.formSection{
     height: 100vh;
     display: flex;
     align-items: center;
@@ -86,4 +88,18 @@ input:focus,select:focus{
     text-align: start;
     width: 20%;
 }
-  
+.dataTable{
+
+}
+table{
+    border-collapse: collapse;
+    width: 100%;
+}
+table,tr,th,td{
+    border: #000 2px solid;
+    padding: 5px;
+    text-align: center;
+}
+.row{
+    display: none;
+}
