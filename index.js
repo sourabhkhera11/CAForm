@@ -47,6 +47,10 @@ form.addEventListener('submit', (e) => {
         fields.forEach(field => {
             field.style.borderColor = '';
         });
+        const city=document.getElementById("city");
+        city.style.borderColor='';
+        const confirmPassword=document.querySelector(".confirmPassword .error-message");
+        confirmPassword.innerText='';
     }
 });
 

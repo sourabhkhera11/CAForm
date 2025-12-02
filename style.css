@@ -10,13 +10,18 @@ body{
     font-size: 16px;
     line-height: 1.6;
     padding: 20px;
+    margin: 0;
+    padding: 0;
 }
 .formSection{
-    height: 100vh;;
+    margin: 0;
+    padding: 0;
+    height: 100vh;
     width: 100%;
     display: flex;
     align-items: center;
     justify-items: center;
+    background-image: url("./public/background2.jpg");
 }
 .container1{
     width: 800px;
@@ -26,6 +31,7 @@ body{
     box-shadow: 0 0 10px rgba(0,0,0,0.1);
     text-align: center;
     background-color: #fff;
+    opacity: 0.90;
 }
 form{
     display: flex;
@@ -37,7 +43,7 @@ input,select,button,textarea{
     padding: 12px;
     border: #dbd6d6 1px solid;
 }
-.genC,.dobC,.cityC{
+.genC{
     text-align: start;
     display: flex;
     align-items: center;
@@ -57,6 +63,7 @@ input,select,button,textarea{
     color: white;
     border: none;
     cursor: pointer;
+    font-weight: 800;
 }
 .mandatory{
     color: red;
@@ -99,29 +106,29 @@ table{
     width: 100%;
 }
 table{
-    border: #000 2px solid;
+    /* border: #000 2px solid; */
     border-radius: 5px;
 }
 th,td{
-    border-top: #000 1px solid;
-    border-bottom: #000 1px solid;
+    border: 2px solid rgba(177, 177, 177, 0.6);
     padding: 5px;
     text-align: center;
 }
 th{
-    background-color: #808080;
+    /* background-color: #808080; */
     padding: 20px;
-    color: #fff;
+    color: #000;
 }
 .row{
     display: none;
 }
 .container2{
-    margin-top: 200px;
+    margin-top: 200px;;
+    /* background-image: url("./public/background3.jpg"); */
 }
 tr:nth-child(even){
-    background-color: #808080;
-    color: #fff;
+    background-color: #d4d4d4;
+    color: #000;
 }
 .firstName,.lastName,.email,.phone,.dob,.city,.password,.confirmPassword{
     flex-basis: 50%;
@@ -135,4 +142,28 @@ tr:nth-child(even){
 }
 .gap{
     margin-left: 30px;
+}
+#dob,#city{
+    color: #9c9a9a;
+    background-color: #fff;
+}
+input[type="date"]::-webkit-calendar-picker-indicator {
+  filter: invert(70%) grayscale(100%); 
+}
+.accountHeading{
+    text-align: center;
+    margin-bottom: 40px;
+    font-size: 40px;
+}
+.column{
+    display: flex;
+    align-items: center;
+    gap: 2px;
+    justify-content: center;
+}
+.actionButtons{
+    display: flex;
+    gap: 10px;
+    justify-content: center;
+    text-align: center;
 }
