@@ -43,6 +43,10 @@ form.addEventListener('submit', (e) => {
     
         table.appendChild(clone);
         form.reset();
+        const fields = document.querySelectorAll('.fields');
+        fields.forEach(field => {
+            field.style.borderColor = '';
+        });
     }
 });
 
