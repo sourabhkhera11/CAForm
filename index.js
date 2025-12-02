@@ -245,7 +245,11 @@ function validatePassword(){
     const passwordInput=document.getElementById("password");
     const confirmPasswordInput=document.getElementById("confirmPassword");
     const errorMessage=confirmPasswordInput.nextElementSibling;
-
+    if(passwordInput.value===""){
+        errorMessage.innerText="This field is required.";
+        confirmPasswordInput.style.borderColor="red";
+        return false;
+    }
     if(passwordInput.value!==confirmPasswordInput.value){
         errorMessage.innerText="Passwords do not match.";
         confirmPasswordInput.style.borderColor="red";

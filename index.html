@@ -15,27 +15,27 @@
             <form id="form1" action="">
                 <div class="firstName">
                     <label class="label" for="firstName">First name<span class="mandatory">*</span>:</label>
-                    <input onblur="validFirstName()" class="fields" type="text" name="firstName" id="firstName" placeholder="Sourabh" >
+                    <input oninput="validFirstName()" class="fields" type="text" name="firstName" id="firstName" placeholder="Sourabh" >
                     <p class="error-message"></p>
                 </div>
                 <div class="lastName">
                     <label class="label" for="lastName">Last name<span class="mandatory">*</span>:</label>
-                    <input onblur="validLastName()" class="fields" type="text" name="lastName" id="lastName" placeholder="Khera">
+                    <input oninput="validLastName()" class="fields" type="text" name="lastName" id="lastName" placeholder="Khera">
                     <p class="error-message"></p>
                 </div>
                 <div class="email">
                     <label class="label" for="email">Email Address<span class="mandatory">*</span>:</label>
-                    <input onblur=" validateEmail()" class="fields" type="text" name="email" id="email" placeholder="abcd@gmail.com">
+                    <input oninput=" validateEmail()" class="fields" type="text" name="email" id="email" placeholder="abcd@gmail.com">
                     <p class="error-message"></p>
                 </div>
                 <div class="phone">
                     <label class="label" for="phone">Phone number<span class="mandatory">*</span>:</label>
-                    <input onblur="validatePhone()" class="fields" type="tel" name="phone" id="phone" placeholder="9898989898">
+                    <input oninput="validatePhone()" class="fields" type="tel" name="phone" id="phone" placeholder="9898989898">
                     <p class="error-message"></p>
     
                 </div>
                 <div class="gender">
-                    <div onclick="validateGender()" class="genC">
+                    <div class="genC">
                         <label  class="Glabel" for="">Gender<span class="mandatory">*</span>:</label>
                         <input type="radio" name="gender" id="Male" value="male">
                         <label for="Male">Male</label>
@@ -45,7 +45,7 @@
                     <p class="error-message"></p>
                 </div>
                 <div class="Interests">
-                    <div onclick="validateInterests()" class="interestsC">
+                    <div class="interestsC">
                         <label class="Glabel" for="">Interests<span class="mandatory">*</span>:</label>
                         <input type="checkbox" name="interest1" id="sports" value="sports">
                         <label for="sports">Sports</label>
@@ -59,16 +59,16 @@
                     <p class="error-message"></p>
                 </div>
                 <div class="dob">
-                    <div onclick="validateDob(event)" class="dobC">
+                    <div class="dobC">
                         <label class="Glabel" for="dob">DOB<span class="mandatory">*</span>:</label>
-                        <input class="fields" type="date" name="DOB" id="dob">
+                        <input oninput="validateDob()" class="fields" type="date" name="DOB" id="dob">
                     </div>
                     <p class="error-message"></p>
                 </div>
                 <div class="city">
-                    <div onclick="validateCity()" class="cityC">
+                    <div  class="cityC">
                         <label class="Glabel" for="city">City<span class="mandatory">*</span>:</label>
-                        <select name="city" id="city">
+                        <select oninput="validateCity()" name="city" id="city">
                             <option value="">--Select Any City--</option>
                             <option value="New Delhi">New Delhi</option>
                             <option value="Mumbai">Mumbai</option>
@@ -81,17 +81,17 @@
                 </div>
                 <div class="address"> 
                     <label class="label" for="address">Address<span class="mandatory">*</span>:</label>
-                    <textarea onblur="validateAdress()" class="fields" name="address" id="address" placeholder="f1/1006 mansarover park"></textarea>
+                    <textarea oninput="validateAdress()" class="fields" name="address" id="address" placeholder="f1/1006 mansarover park"></textarea>
                     <p class="error-message"></p>
                 </div>
                 <div class="password">
                     <label class="label" for="password">Password<span class="mandatory">*</span>:</label>
-                    <input onblur=" validateRightPassword()" class="fields" type="password" name="password" id="password" placeholder="********">
+                    <input oninput=" validateRightPassword()" class="fields" type="password" name="password" id="password" placeholder="********">
                     <p class="error-message"></p>
                 </div>
                 <div class="confirmPassword">
                     <label class="label" for="confirmPassword">Confirm password<span class="mandatory">*</span>:</label>
-                    <input onblur="validatePassword()"  class="fields" type="password" name="confirmPassword" id="confirmPassword" placeholder="********">
+                    <input oninput="validatePassword()"  class="fields" type="password" name="confirmPassword" id="confirmPassword" placeholder="********">
                     <p class="error-message"></p>
                 </div>
                 <button class="submit" type="submit">Create Account</button>
