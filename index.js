@@ -1,16 +1,13 @@
 let formData = [];
 const form = document.getElementById('form1');
-
+let editId=-1;
 form.addEventListener('submit', (e) => {
     const submitButton=document.getElementById("submitButton");
-    if(submitButton.innerText==="Edit Details"){
-        submitButton.innerText="Submit";
-    }
     e.preventDefault();
     if(validFirstName() && validLastName() && validateEmail() && validatePhone() && validateGender() && validateInterests() && validateDob() && validateCity() && validateAdress() && validateRightPassword() && validatePassword()){
         
         alert("Form submitted successfully!");
-    
+        
         const data = new FormData(form);
         let entry = {};
         console.log(data.entries());
@@ -18,34 +15,71 @@ form.addEventListener('submit', (e) => {
             entry[name] = value;
         }
         console.log(entry);
-        formData.push(entry);
-    
         const Interests = [
             entry.interest1,
             entry.interest2,
             entry.interest3,
             entry.interest4
         ].filter(Boolean).join(", ");
-    
-        const table = document.getElementById('dataTable');
-        const original = document.getElementById('-2');
-        const clone = original.cloneNode(true);
-    
-        clone.id = formData.length - 1;
-        clone.style.display = 'table-row'; 
-    
-        clone.querySelector(".firstNamee").innerText = entry.firstName.trim();
-        clone.querySelector(".lastNamee").innerText = entry.lastName.trim();
-        clone.querySelector(".emaill").innerText = entry.email.trim();
-        clone.querySelector(".phonee").innerText = entry.phone.trim();
-        clone.querySelector(".genderr").innerText = entry.gender;
-        clone.querySelector(".Interestss").innerText = Interests;
-        clone.querySelector(".dobb").innerText = entry.DOB.trim();  
-        clone.querySelector(".cityy").innerText = entry.city.trim();
-        clone.querySelector(".addresss").innerText = entry.address.trim();
-        clone.querySelector(".passwordd").innerText = entry.password.trim();
-    
-        table.appendChild(clone);
+
+        if(submitButton.innerText==="Edit Details" && editId!=-1){
+            submitButton.innerText="Submit";
+            const row=document.getElementById(editId);
+            row.querySelector(".firstNamee").innerText = entry.firstName.trim();
+            row.querySelector(".lastNamee").innerText = entry.lastName.trim();
+            row.querySelector(".emaill").innerText = entry.email.trim();
+            row.querySelector(".phonee").innerText = entry.phone.trim();
+            row.querySelector(".genderr").innerText = entry.gender;
+            row.querySelector(".Interestss").innerText = Interests;
+            row.querySelector(".dobb").innerText = entry.DOB.trim();  
+            row.querySelector(".cityy").innerText = entry.city.trim();
+            row.querySelector(".addresss").innerText = entry.address.trim();
+            row.querySelector(".passwordd").innerText = entry.password.trim();
+
+            // formData[editId]
+            const editEntry=formData[editId];
+            editEntry.firstName= entry.firstName.trim();
+            editEntry.lastName= entry.lastName.trim();
+            editEntry.email= entry.email.trim();
+            editEntry.phone= entry.phone.trim();
+            editEntry.gender= entry.gender;
+            editEntry.DOB= entry.DOB.trim();  
+            editEntry.city= entry.city.trim();
+            editEntry.address= entry.address.trim();
+            editEntry.password= entry.password.trim();
+            const intNames=['interest1','interest2','interest3','interest4'];
+            for(let intt of intNames){
+                if(entry.intt){
+                    formData[intt]=entry.intt
+                }
+                else{
+                    formData[intt]=""
+                }
+            }
+            editId=-1;
+        }
+        else{
+            formData.push(entry);
+            const table = document.getElementById('dataTable');
+            const original = document.getElementById('-2');
+            const clone = original.cloneNode(true);
+        
+            clone.id = formData.length - 1;
+            clone.style.display = 'table-row'; 
+        
+            clone.querySelector(".firstNamee").innerText = entry.firstName.trim();
+            clone.querySelector(".lastNamee").innerText = entry.lastName.trim();
+            clone.querySelector(".emaill").innerText = entry.email.trim();
+            clone.querySelector(".phonee").innerText = entry.phone.trim();
+            clone.querySelector(".genderr").innerText = entry.gender;
+            clone.querySelector(".Interestss").innerText = Interests;
+            clone.querySelector(".dobb").innerText = entry.DOB.trim();  
+            clone.querySelector(".cityy").innerText = entry.city.trim();
+            clone.querySelector(".addresss").innerText = entry.address.trim();
+            clone.querySelector(".passwordd").innerText = entry.password.trim();
+        
+            table.appendChild(clone);
+        }
         form.reset();
         const fields = document.querySelectorAll('.fields');
         fields.forEach(field => {
@@ -282,8 +316,10 @@ function deleteRow(event){
     row.remove();
     formData.splice(rowid,1);
 }
+
 function editRow(event){
     const rowid=event.target.closest("tr").id;
+    editId=rowid;
     const row=document.getElementById(rowid);
     const entry=formData[rowid];
     console.log(entry);
@@ -309,8 +345,9 @@ function editRow(event){
     });
     const submitButton=document.getElementById("submitButton");
     submitButton.innerText="Edit Details";
-    formData.splice(rowid,1);;
-    row.remove();
+    // formData.splice(rowid,1);
+    // delete formData[rowid];
+    // row.remove();
 }
 
 // console.log("Before timeout");
