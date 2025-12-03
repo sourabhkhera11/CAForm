@@ -13,7 +13,7 @@ form.addEventListener('submit', (e) => {
         for (let [name, value] of data.entries()) {
             entry[name] = value;
         }
-    
+        console.log(entry);
         formData.push(entry);
     
         const Interests = [
@@ -276,9 +276,7 @@ function deleteRow(event){
     const rowid=event.target.closest("tr").id;
     const row=document.getElementById(rowid);
     row.remove();
-    if(rowid!=-1){
-        formData.splice(rowid,1);
-    }
+    formData.splice(rowid,1);
 }
 function editRow(event){
     const rowid=event.target.closest("tr").id;
@@ -296,7 +294,15 @@ function editRow(event){
     document.getElementById("address").value=entry.address;
     document.getElementById("password").value=entry.password;
     document.getElementById("confirmPassword").value=entry.password;
-    scrollToSection("formSection");
+    document.querySelector(`input[name="gender"][value="${entry.gender}"]`).checked = true;
+    const interests = ['interest1', 'interest2', 'interest3', 'interest4'];
+    interests.forEach(interest => {
+        if (entry[interest]) {
+            document.querySelector(`input[name="${interest}"][value="${entry[interest]}"]`).checked = true;
+        } else {
+            document.querySelector(`input[name="${interest}"]`).checked = false;
+        }
+    });
 }
 
 
