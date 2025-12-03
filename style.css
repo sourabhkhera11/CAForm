@@ -184,21 +184,33 @@ th{
     color: #fff;
     line-height: 1px;
 }
-.sortBy{
+.sortBy,.filterBy{
     display: flex;
     align-items: center;
     margin-bottom: 20px;
     font-weight: 700;
     cursor: pointer;
 }
-#sortByWho{
+ #sortByWho{
     margin-left: 5px;
     border-radius: 5px;
     background-color: #fff;
     color: #9c9a9a;
 }
+/*
 .sortBy{
     position: absolute;
     right :40px;
     top: 140px;
-}
+} */
+ .actionRow{
+    display: flex;
+    gap: 20px;
+    justify-content: end;
+ }
+ .filterBy{
+    border: #9c9a9a 1px solid;
+    padding:0px 15px;
+    border-radius: 5px;
+    opacity: 0.9;
+ }
