@@ -129,6 +129,7 @@ th{
     box-shadow: 0 0 10px rgba(0,0,0,0.1);
     opacity: 0.90;
     border-radius: 20px;
+    position: relative;
 
 }
 tr:nth-child(even){
@@ -157,7 +158,7 @@ input[type="date"]::-webkit-calendar-picker-indicator {
 }
 .accountHeading{
     text-align: center;
-    margin-bottom: 40px;
+    margin-bottom: 80px;
     font-size: 40px;
 }
 .column{
@@ -189,4 +190,15 @@ th{
     margin-bottom: 20px;
     font-weight: 700;
     cursor: pointer;
+}
+#sortByWho{
+    margin-left: 5px;
+    border-radius: 5px;
+    background-color: #fff;
+    color: #9c9a9a;
+}
+.sortBy{
+    position: absolute;
+    right :40px;
+    top: 140px;
 }

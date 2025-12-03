@@ -52,11 +52,51 @@ let formData = [
         password:"Deepanshu@123" 
     }
 ];
-function sortBy(){
+function sortByFirstName(){
     formData.sort((a, b) => a.firstName.localeCompare(b.firstName));
     const tableBody=document.getElementById("tbody");
     tableBody.innerHTML="";
     loadDataFromDatabase(); 
+}
+function sortByLastName(){
+    formData.sort((a, b) => a.lastName.localeCompare(b.lastName));
+    const tableBody=document.getElementById("tbody");
+    tableBody.innerHTML="";
+    loadDataFromDatabase(); 
+}
+function sortByCity(){
+    formData.sort((a, b) => a.city.localeCompare(b.city));
+    const tableBody=document.getElementById("tbody");
+    tableBody.innerHTML="";
+    loadDataFromDatabase(); 
+}
+function sortByDob(){
+    formData.sort((a, b) => {
+        return new Date(a.DOB) - new Date(b.DOB);
+    });
+    const tableBody=document.getElementById("tbody");
+    tableBody.innerHTML="";
+    loadDataFromDatabase(); 
+}
+function handle(event){
+    const value =event.target.value;
+    switch (value) {
+        case "first":
+            sortByFirstName();
+            break;
+        case "last":
+            sortByLastName();
+            break;
+        case "dob":
+            sortByDob();
+            break;
+        case "city":
+            sortByCity();
+            break;
+        default:
+            console.log("Not handled");
+            break;
+    }
 }
 function loadDataFromDatabase(){
     formData.forEach((element ,index)=>{
