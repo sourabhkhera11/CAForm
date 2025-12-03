@@ -1,4 +1,89 @@
-let formData = [];
+let formData = [
+    {
+        firstName:"Sourabh",
+        lastName:"Khera",
+        email:"sourabhkhera11@gmail.com",
+        phone:"9876543210",
+        gender:"male",
+        interest2:"music",
+        interest1:"sports",
+        DOB:"2003-10-31",
+        city:"New Delhi",
+        address:"123, ABC Street, New Delhi",
+        password:"Sourabh@123" 
+    },
+    {
+        firstName:"Abhinav",
+        lastName:"Goyal",
+        email:"abhinavgoyal@gmail.com",
+        phone:"8700134518",
+        gender:"male",
+        interest2:"music",
+        interest3:"movies",
+        DOB:"2003-10-29",
+        city:"Mumbai",
+        address:"B Block Noida",
+        password:"Abhinav@123" 
+    },
+    {
+        firstName:"Tushar",
+        lastName:"Verma",
+        email:"tushar@gmail.com",
+        phone:"9834567012",
+        gender:"female",
+        interest2:"music",
+        interest4:"politics",
+        DOB:"2002-12-02",
+        city:"Chennai",
+        address:"XYZ Colony Shahdara",
+        password:"Tushar@123" 
+    },
+    {
+        firstName:"Deepanshu",
+        lastName:"Punj",
+        email:"deepanshu@gmail.com",
+        phone:"8834567012",
+        gender:"male",
+        interest1:"sports",
+        interest4:"politics",
+        DOB:"2004-03-21",
+        city:"Chennai",
+        address:"PQR Colony Uttam Nagar",
+        password:"Deepanshu@123" 
+    }
+];
+
+function loadDataFromDatabase(){
+    formData.forEach((element ,index)=>{
+        const table = document.getElementById('dataTable');
+        const original = document.getElementById('-2');
+        const clone = original.cloneNode(true);
+        
+        clone.id = index;
+        clone.style.display = 'table-row'; 
+        const Interests = [
+            element.interest1,
+            element.interest2,
+            element.interest3,
+            element.interest4
+        ].filter(Boolean).join(", ");
+        clone.querySelector(".firstNamee").innerText = element.firstName.trim();
+        clone.querySelector(".lastNamee").innerText = element.lastName.trim();
+        clone.querySelector(".emaill").innerText = element.email.trim();
+        clone.querySelector(".phonee").innerText = element.phone.trim();
+        clone.querySelector(".genderr").innerText = element.gender;
+        clone.querySelector(".Interestss").innerText = Interests;
+        clone.querySelector(".dobb").innerText = element.DOB.trim();  
+        clone.querySelector(".cityy").innerText = element.city.trim();
+        clone.querySelector(".addresss").innerText = element.address.trim();
+        clone.querySelector(".passwordd").innerText = element.password.trim();
+        
+        table.appendChild(clone);
+    })
+}
+window.onload=function(){
+    loadDataFromDatabase();
+}
 const form = document.getElementById('form1');
 let editId=-1;
 form.addEventListener('submit', (e) => {

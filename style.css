@@ -99,21 +99,16 @@ input:focus,select:focus,textarea:focus{
     text-align: start;
     width: 20%;
 }
-.dataTable{
-
-}
 table{
     border-collapse: collapse;
     width: 100%;
-}
-table{
-    /* border: #000 2px solid; */
-    border-radius: 5px;
+    /* border-radius: 5px; */
 }
 th,td{
     border: 2px solid rgba(124, 124, 124, 0.6);
     padding: 5px;
     text-align: center;
+    /* border-radius: 10px; */
 }
 th{
     /* background-color: #808080; */
@@ -187,4 +182,10 @@ thead{
 th{
     color: #fff;
     line-height: 1px;
+}
+.sortBy{
+    display: flex;
+    align-items: center;
+    margin-bottom: 20px;
+    font-weight: 700;
 }
