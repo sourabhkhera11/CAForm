@@ -2,6 +2,10 @@ let formData = [];
 const form = document.getElementById('form1');
 
 form.addEventListener('submit', (e) => {
+    const submitButton=document.getElementById("submitButton");
+    if(submitButton.innerText==="Edit Details"){
+        submitButton.innerText="Submit";
+    }
     e.preventDefault();
     if(validFirstName() && validLastName() && validateEmail() && validatePhone() && validateGender() && validateInterests() && validateDob() && validateCity() && validateAdress() && validateRightPassword() && validatePassword()){
         
@@ -303,8 +307,11 @@ function editRow(event){
             document.querySelector(`input[name="${interest}"]`).checked = false;
         }
     });
+    const submitButton=document.getElementById("submitButton");
+    submitButton.innerText="Edit Details";
+    formData.splice(rowid,1);;
+    row.remove();
 }
-
 
 // console.log("Before timeout");
 // setTimeout(() => {
