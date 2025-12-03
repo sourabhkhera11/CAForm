@@ -28,7 +28,7 @@ body{
     width: 800px;
     margin: auto;
     padding: 50px;
-    border-radius: 10px;
+    border-radius: 20px;
     box-shadow: 0 0 10px rgba(0,0,0,0.1);
     text-align: center;
     background-color: #fff;
@@ -111,7 +111,7 @@ table{
     border-radius: 5px;
 }
 th,td{
-    border: 2px solid rgba(177, 177, 177, 0.6);
+    border: 2px solid rgba(124, 124, 124, 0.6);
     padding: 5px;
     text-align: center;
 }
@@ -129,10 +129,15 @@ th{
     display: flex;
     justify-content: center;
     align-items: center;
+    background-color: #fff;
+    padding: 50px;
+    box-shadow: 0 0 10px rgba(0,0,0,0.1);
+    opacity: 0.90;
+    border-radius: 20px;
 
 }
 tr:nth-child(even){
-    background-color: #d4d4d4;
+    background-color: #ebebeb;
     color: #000;
 }
 .firstName,.lastName,.email,.phone,.dob,.city,.password,.confirmPassword{
@@ -174,4 +179,12 @@ input[type="date"]::-webkit-calendar-picker-indicator {
 }
 .editButton,.deleteButton{
     cursor: pointer;
+}
+thead{
+    background-color: #5cb85c;
+    color: #fff;
+}
+th{
+    color: #fff;
+    line-height: 1px;
 }
