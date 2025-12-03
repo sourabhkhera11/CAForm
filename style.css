@@ -188,4 +188,5 @@ th{
     align-items: center;
     margin-bottom: 20px;
     font-weight: 700;
+    cursor: pointer;
 }

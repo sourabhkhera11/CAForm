@@ -52,10 +52,15 @@ let formData = [
         password:"Deepanshu@123" 
     }
 ];
-
+function sortBy(){
+    formData.sort((a, b) => a.firstName.localeCompare(b.firstName));
+    const tableBody=document.getElementById("tbody");
+    tableBody.innerHTML="";
+    loadDataFromDatabase(); 
+}
 function loadDataFromDatabase(){
     formData.forEach((element ,index)=>{
-        const table = document.getElementById('dataTable');
+        const table = document.getElementById("tbody");
         const original = document.getElementById('-2');
         const clone = original.cloneNode(true);
         
@@ -145,7 +150,7 @@ form.addEventListener('submit', (e) => {
         }
         else{
             formData.push(entry);
-            const table = document.getElementById('dataTable');
+            const table = document.getElementById('tbody');
             const original = document.getElementById('-2');
             const clone = original.cloneNode(true);
         
