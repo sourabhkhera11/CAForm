@@ -41,6 +41,29 @@
         
                     </div>
                 </div>
+                <div class="sec3">
+                    <div class="dob">
+                        <div class="dobC">
+                            <label class="Glabel" for="dob">DOB<span class="mandatory">*</span>:</label>
+                            <input onblur="validateDob()" oninput="validateDob()" class="fields" type="date" name="DOB" id="dob">
+                        </div>
+                        <p class="error-message"></p>
+                    </div>
+                    <div class="city">
+                        <div  class="cityC">
+                            <label class="Glabel" for="city">City<span class="mandatory">*</span>:</label>
+                            <select onblur="validateCity()" oninput="validateCity()" name="city" id="city">
+                                <option value="">Select Your City</option>
+                                <option value="New Delhi">New Delhi</option>
+                                <option value="Mumbai">Mumbai</option>
+                                <option value="Banglore">Banglore</option>
+                                <option value="Chennai">Chennai</option>
+                                <option value="Kolkata">Kolkata</option>
+                            </select>
+                        </div>
+                        <p class="error-message"></p>
+                    </div>
+                </div>
                 <div class="gender">
                     <div class="genC">
                         <label  class="Glabel" for="">Gender<span class="mandatory">*</span>:</label>
@@ -64,29 +87,6 @@
                         <label class="left"  for="politics">Politics</label>
                     </div>
                     <p class="error-message"></p>
-                </div>
-                <div class="sec3">
-                    <div class="dob">
-                        <div class="dobC">
-                            <label class="Glabel" for="dob">DOB<span class="mandatory">*</span>:</label>
-                            <input onblur="validateDob()" oninput="validateDob()" class="fields" type="date" name="DOB" id="dob">
-                        </div>
-                        <p class="error-message"></p>
-                    </div>
-                    <div class="city">
-                        <div  class="cityC">
-                            <label class="Glabel" for="city">City<span class="mandatory">*</span>:</label>
-                            <select onblur="validateCity()" oninput="validateCity()" name="city" id="city">
-                                <option value="">Select Your City</option>
-                                <option value="New Delhi">New Delhi</option>
-                                <option value="Mumbai">Mumbai</option>
-                                <option value="Banglore">Banglore</option>
-                                <option value="Chennai">Chennai</option>
-                                <option value="Kolkata">Kolkata</option>
-                            </select>
-                        </div>
-                        <p class="error-message"></p>
-                    </div>
                 </div>
                 <div class="address"> 
                     <label class="label" for="address">Address<span class="mandatory">*</span>:</label>
