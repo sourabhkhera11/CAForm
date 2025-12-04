@@ -116,15 +116,47 @@
             <div class="actionRow">
                 <div class="filterBy">
                     <span>
-                        FILTER
+                        FILTER  
                     </span>
-                    <span>
-                        <svg xmlns="http://www.w3.org/2000/svg" width="30px" height="22x" viewBox="0 0 24 24" fill="none">
-    <path opacity="0.1" d="M19 3H5C3.89543 3 3 3.89543 3 5V6.17157C3 6.70201 3.21071 7.21071 3.58579 7.58579L9.41421 13.4142C9.78929 13.7893 10 14.298 10 14.8284V20V20.2857C10 20.9183 10.7649 21.2351 11.2122 20.7878L12 20L13.4142 18.5858C13.7893 18.2107 14 17.702 14 17.1716V14.8284C14 14.298 14.2107 13.7893 14.5858 13.4142L20.4142 7.58579C20.7893 7.21071 21 6.70201 21 6.17157V5C21 3.89543 20.1046 3 19 3Z" fill="#323232"/>
-    <path d="M19 3H5C3.89543 3 3 3.89543 3 5V6.17157C3 6.70201 3.21071 7.21071 3.58579 7.58579L9.41421 13.4142C9.78929 13.7893 10 14.298 10 14.8284V20V20.2857C10 20.9183 10.7649 21.2351 11.2122 20.7878L12 20L13.4142 18.5858C13.7893 18.2107 14 17.702 14 17.1716V14.8284C14 14.298 14.2107 13.7893 14.5858 13.4142L20.4142 7.58579C20.7893 7.21071 21 6.70201 21 6.17157V5C21 3.89543 20.1046 3 19 3Z" stroke="#323232" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-    </svg>
-                    </span>
+                       <svg xmlns="http://www.w3.org/2000/svg" width="25px" height="30px" viewBox="0 0 24 24" fill="none">
+<path d="M14 20.5H10C9.80189 20.4974 9.61263 20.4176 9.47253 20.2775C9.33244 20.1374 9.25259 19.9481 9.25 19.75V12L3.9 4.69C3.81544 4.58007 3.76395 4.44832 3.75155 4.31018C3.73915 4.17204 3.76636 4.03323 3.83 3.91C3.89375 3.78712 3.98984 3.68399 4.10792 3.61173C4.226 3.53947 4.36157 3.50084 4.5 3.5H19.5C19.6384 3.50084 19.774 3.53947 19.8921 3.61173C20.0101 3.68399 20.1062 3.78712 20.17 3.91C20.2336 4.03323 20.2608 4.17204 20.2484 4.31018C20.236 4.44832 20.1846 4.58007 20.1 4.69L14.75 12V19.75C14.7474 19.9481 14.6676 20.1374 14.5275 20.2775C14.3874 20.4176 14.1981 20.4974 14 20.5ZM10.75 19H13.25V11.75C13.2492 11.5907 13.302 11.4357 13.4 11.31L18 5H6L10.62 11.31C10.718 11.4357 10.7708 11.5907 10.77 11.75L10.75 19Z" fill="#000000"/>
+</svg>
                 </div>
+                <div class="filterBar">
+        <div class="filterContent">
+            <span>
+                <p>Filter By</p>
+            </span>
+            <span>
+                <input type="checkbox" name="" id="maleF">
+                <label for="maleF">Male</label>
+            </span>
+            <span>
+                <input type="checkbox" name="" id="femaleF">
+                <label for="femaleF">Female</label>
+            </span>
+            <span>
+                <input type="checkbox" name="" id="newDelhiF">
+                <label for="newDelhiF">New Delhi</label>
+            </span>
+            <span>
+                <input type="checkbox" name="" id="mumbaiF">
+                <label for="mumbaiF">Mumbai</label>
+            </span>
+            <span>
+                <input type="checkbox" name="" id="bangloreF">
+                <label for="bangloreF">Banglore</label>
+            </span>
+            <span>
+                <input type="checkbox" name="" id="chennaiF">
+                <label for="chennaiF">Chennai</label>
+            </span>
+            <span>
+                <input type="checkbox" name="" id="kolkataF">
+                <label for="kolkataF">Kolkata</label>
+            </span>
+        </div>
+    </div>
                 <div class="sortBy">
                     <span>SORT BY : </span>
                     <select onchange="sortBy(event)" name="" id="sortByWho">
@@ -140,6 +172,7 @@
                     </select>
     </div>
 
+    
             </div>
             <table id="dataTable">
                 <thead>
