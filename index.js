@@ -447,3 +447,32 @@ function discard(){
     document.getElementById("discardButton").style.display="none";
 
 }
+function filterBy(){
+    const male=document.getElementById("maleF").checked;
+    const female=document.getElementById("femaleF").checked;
+    const newDelhi=document.getElementById("newDelhiF").checked;
+    const banglore=document.getElementById("bangloreF").checked;
+    const mumbai=document.getElementById("mumbaiF").checked;
+    const chennai=document.getElementById("chennaiF").checked;
+    const kolkata=document.getElementById("kolkataF").checked;
+
+    let tempArr=[...formData];
+    if(male || female)[
+        tempArr=tempArr.filter(item=>{
+            if(male && item.gender==="male")return true;
+            if(female && item.gender==="female")return true;
+            return false;
+        })
+    ]
+    let cities=[];
+    if(newDelhi) cities.push("New Delhi");
+    if(banglore) cities.push("Banglore");
+    if(mumbai) cities.push("Mumbai");
+    if(chennai) cities.push("Chennai");
+    if(kolkata) cities.push("Kolkata");
+    if(cities.length>0){
+        tempArr=tempArr.filter(item=>{
+            cities.includes(item.city)
+        })
+    }
+}
