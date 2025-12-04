@@ -52,53 +52,37 @@ let formData = [
         password:"Deepanshu@123" 
     }
 ];
-function sortByFirstName(){
-    formData.sort((a, b) => a.firstName.localeCompare(b.firstName));
+
+function sortBy(event){
+    const choiceId=event.target.options[event.target.selectedIndex].id;
+    const field=event.target.value;
     const tableBody=document.getElementById("tbody");
     tableBody.innerHTML="";
-    loadDataFromDatabase(); 
-}
-function sortByLastName(){
-    formData.sort((a, b) => a.lastName.localeCompare(b.lastName));
-    const tableBody=document.getElementById("tbody");
-    tableBody.innerHTML="";
-    loadDataFromDatabase(); 
-}
-function sortByCity(){
-    formData.sort((a, b) => a.city.localeCompare(b.city));
-    const tableBody=document.getElementById("tbody");
-    tableBody.innerHTML="";
-    loadDataFromDatabase(); 
-}
-function sortByDob(){
-    formData.sort((a, b) => {
-        return new Date(a.DOB) - new Date(b.DOB);
-    });
-    const tableBody=document.getElementById("tbody");
-    tableBody.innerHTML="";
-    loadDataFromDatabase(); 
-}
-function handle(event){
-    const value =event.target.value;
-    switch (value) {
-        case "first":
-            sortByFirstName();
+    switch(choiceId){
+        case "FNA-Z":
+        case "LNA-Z":
+        case "CityA-Z":
+            formData.sort((a,b)=> a[field].localeCompare(b[field]));
             break;
-        case "last":
-            sortByLastName();
+        case "FNZ-A":
+        case "LNZ-A":
+        case "CityZ-A":
+            formData.sort((a,b)=>b[field].localeCompare(a[field]));
             break;
-        case "dob":
-            sortByDob();
+        case "DOBO-Y":
+            formData.sort((a, b) => {
+            return new Date(a.DOB) - new Date(b.DOB);
+            });
             break;
-        case "city":
-            sortByCity();
-            break;
-        default:
-            console.log("Not handled");
+        case "DOBY-O":
+            formData.sort((a, b) => {
+            return new Date(b.DOB) - new Date(a.DOB);
+            });
             break;
     }
+    renderData();
 }
-function loadDataFromDatabase(){
+function renderData(){
     formData.forEach((element ,index)=>{
         const table = document.getElementById("tbody");
         const original = document.getElementById('-2');
@@ -127,7 +111,7 @@ function loadDataFromDatabase(){
     })
 }
 window.onload=function(){
-    loadDataFromDatabase();
+    renderData();
 }
 const form = document.getElementById('form1');
 let editId=-1;
