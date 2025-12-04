@@ -408,7 +408,7 @@ function deleteRow(event){
     const rowid=event.target.closest("tr").id;
     const row=document.getElementById(rowid);
     row.remove();
-    formData.splice(rowid,1);
+    delete formData[rowid];
 }
 
 function editRow(event){
