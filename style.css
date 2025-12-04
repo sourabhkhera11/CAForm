@@ -66,6 +66,17 @@ input,select,button,textarea{
     cursor: pointer;
     font-weight: 800;
 }
+.discard{
+    background-color: rgb(209, 58, 58);
+    color: #fff;
+    font-weight: 800;
+    cursor: pointer;
+    border: none;
+    display: none;
+}
+.discard:hover{
+    background-color: rgb(225, 20, 20);
+}
 .mandatory{
     color: red;
 }
@@ -165,7 +176,7 @@ input[type="date"]::-webkit-calendar-picker-indicator {
 }
 .accountHeading{
     text-align: center;
-    margin-bottom: 50px;
+    margin-bottom: 5px;
 }
 .heading,.accountHeading{
     font-size: 40px;

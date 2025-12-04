@@ -115,6 +115,12 @@ function sortBy(event){
     renderData();
 }
 function renderRow(row,entry){
+    const Interests = [
+            entry.interest1,
+            entry.interest2,
+            entry.interest3,
+            entry.interest4
+        ].filter(Boolean).join(", ");
     row.querySelector(".firstNamee").innerText = entry.firstName.trim();
     row.querySelector(".lastNamee").innerText = entry.lastName.trim();
     row.querySelector(".emaill").innerText = entry.email.trim();
@@ -130,9 +136,6 @@ function formSubmit(e){
     const submitButton=document.getElementById("submitButton");
     e.preventDefault();
     if(validFirstName() && validLastName() && validateEmail() && validatePhone() && validateGender() && validateInterests() && validateDob() && validateCity() && validateAdress() && validateRightPassword() && validatePassword()){
-        
-        alert("Form submitted successfully!");
-        
         const data = new FormData(form);
         let entry = {};
         console.log(data.entries());
@@ -140,15 +143,10 @@ function formSubmit(e){
             entry[name] = value;
         }
         console.log(entry);
-        const Interests = [
-            entry.interest1,
-            entry.interest2,
-            entry.interest3,
-            entry.interest4
-        ].filter(Boolean).join(", ");
-
-        if(submitButton.innerText==="Edit Details" && editId!=-1){
+        if(submitButton.innerText==="Save Changes" && editId!=-1){
+            alert("Details updated successfully!");
             submitButton.innerText="Submit";
+            document.getElementById("discardButton").style.display="none";
             const row=document.getElementById(editId);
             renderRow(row,entry);
             const editEntry=formData[editId];
@@ -173,6 +171,7 @@ function formSubmit(e){
             editId=-1;
         }
         else{
+            alert("Form submitted successfully!");
             formData.push(entry);
             const table = document.getElementById('tbody');
             const original = document.getElementById('-2');
@@ -202,8 +201,6 @@ function handleSuccess(errorMessage,Input){
     errorMessage.innerText = "";
     Input.style.borderColor = "#5cb85c";
 }
-
-
 function validFirstName(){
     const nameInput=document.getElementById("firstName");
     const nameValue=nameInput.value.trim();
@@ -415,12 +412,13 @@ function deleteRow(event){
 }
 
 function editRow(event){
+    window.scrollTo({top:0,behavior:"smooth"});
+    document.getElementById("discardButton").style.display="block";
     const rowid=event.target.closest("tr").id;
     editId=rowid;
     const row=document.getElementById(rowid);
     const entry=formData[rowid];
     console.log(entry);
-    // console.log(row.querySelector(".firstNamee").innerHTML);
     console.log(entry.firstName);
     document.getElementById("firstName").value=entry.firstName;
     document.getElementById("lastName").value=entry.lastName;
@@ -441,15 +439,11 @@ function editRow(event){
         }
     });
     const submitButton=document.getElementById("submitButton");
-    submitButton.innerText="Edit Details";
-    // formData.splice(rowid,1);
-    // delete formData[rowid];
-    // row.remove();
+    submitButton.innerText="Save Changes";
 }
+function discard(){
+    form.reset();
+    document.getElementById("submitButton").innerHTML="Create Account";
+    document.getElementById("discardButton").style.display="none";
 
-// console.log("Before timeout");
-// setTimeout(() => {
-//     console.log("Hello after 2 seconds");
-// }, -2);
-// console.log("after timeout ");
-
+}
