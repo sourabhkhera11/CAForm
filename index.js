@@ -1,4 +1,5 @@
 let editId=-1;
+const form = document.getElementById('form1');
 let formData = [
     {
         firstName:"Sourabh",
@@ -113,8 +114,7 @@ function sortBy(event){
     }
     renderData();
 }
-const form = document.getElementById('form1');
-form.addEventListener('submit', (e) => {
+function formSubmit(e){
     const submitButton=document.getElementById("submitButton");
     e.preventDefault();
     if(validFirstName() && validLastName() && validateEmail() && validatePhone() && validateGender() && validateInterests() && validateDob() && validateCity() && validateAdress() && validateRightPassword() && validatePassword()){
@@ -203,7 +203,7 @@ form.addEventListener('submit', (e) => {
         const confirmPassword=document.querySelector(".confirmPassword .error-message");
         confirmPassword.innerText='';
     }
-});
+};
 
 function validateAdress(){
     const addressInput=document.getElementById("address");
