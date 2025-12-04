@@ -54,7 +54,7 @@ let formData = [
         password:"Deepanshu@123" 
     }
 ];
-function renderData(){
+function renderData(formData){
     formData.forEach((element ,index)=>{
         const table = document.getElementById("tbody");
         const original = document.getElementById('-2');
@@ -83,7 +83,7 @@ function renderData(){
     })
 }
 window.onload=function(){
-    renderData();
+    renderData(formData);
 }
 function sortBy(event){
     const choiceId=event.target.options[event.target.selectedIndex].id;
@@ -112,7 +112,7 @@ function sortBy(event){
             });
             break;
     }
-    renderData();
+    renderData(formData);
 }
 function renderRow(row,entry){
     const Interests = [
@@ -472,7 +472,11 @@ function filterBy(){
     if(kolkata) cities.push("Kolkata");
     if(cities.length>0){
         tempArr=tempArr.filter(item=>{
-            cities.includes(item.city)
+            return cities.includes(item.city);
+            
         })
     }
+    const tableBody=document.getElementById("tbody");
+    tableBody.innerHTML="";
+    renderData(tempArr);
 }
