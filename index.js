@@ -114,6 +114,18 @@ function sortBy(event){
     }
     renderData();
 }
+function renderRow(row,entry){
+    row.querySelector(".firstNamee").innerText = entry.firstName.trim();
+    row.querySelector(".lastNamee").innerText = entry.lastName.trim();
+    row.querySelector(".emaill").innerText = entry.email.trim();
+    row.querySelector(".phonee").innerText = entry.phone.trim();
+    row.querySelector(".genderr").innerText = entry.gender;
+    row.querySelector(".Interestss").innerText = Interests;
+    row.querySelector(".dobb").innerText = entry.DOB.trim();  
+    row.querySelector(".cityy").innerText = entry.city.trim();
+    row.querySelector(".addresss").innerText = entry.address.trim();
+    row.querySelector(".passwordd").innerText = entry.password.trim();
+}
 function formSubmit(e){
     const submitButton=document.getElementById("submitButton");
     e.preventDefault();
@@ -138,18 +150,7 @@ function formSubmit(e){
         if(submitButton.innerText==="Edit Details" && editId!=-1){
             submitButton.innerText="Submit";
             const row=document.getElementById(editId);
-            row.querySelector(".firstNamee").innerText = entry.firstName.trim();
-            row.querySelector(".lastNamee").innerText = entry.lastName.trim();
-            row.querySelector(".emaill").innerText = entry.email.trim();
-            row.querySelector(".phonee").innerText = entry.phone.trim();
-            row.querySelector(".genderr").innerText = entry.gender;
-            row.querySelector(".Interestss").innerText = Interests;
-            row.querySelector(".dobb").innerText = entry.DOB.trim();  
-            row.querySelector(".cityy").innerText = entry.city.trim();
-            row.querySelector(".addresss").innerText = entry.address.trim();
-            row.querySelector(".passwordd").innerText = entry.password.trim();
-
-            // formData[editId]
+            renderRow(row,entry);
             const editEntry=formData[editId];
             editEntry.firstName= entry.firstName.trim();
             editEntry.lastName= entry.lastName.trim();
@@ -179,18 +180,7 @@ function formSubmit(e){
         
             clone.id = formData.length - 1;
             clone.style.display = 'table-row'; 
-        
-            clone.querySelector(".firstNamee").innerText = entry.firstName.trim();
-            clone.querySelector(".lastNamee").innerText = entry.lastName.trim();
-            clone.querySelector(".emaill").innerText = entry.email.trim();
-            clone.querySelector(".phonee").innerText = entry.phone.trim();
-            clone.querySelector(".genderr").innerText = entry.gender;
-            clone.querySelector(".Interestss").innerText = Interests;
-            clone.querySelector(".dobb").innerText = entry.DOB.trim();  
-            clone.querySelector(".cityy").innerText = entry.city.trim();
-            clone.querySelector(".addresss").innerText = entry.address.trim();
-            clone.querySelector(".passwordd").innerText = entry.password.trim();
-        
+            renderRow(clone,entry);
             table.appendChild(clone);
         }
         form.reset();
@@ -204,21 +194,6 @@ function formSubmit(e){
         confirmPassword.innerText='';
     }
 };
-
-function validateAdress(){
-    const addressInput=document.getElementById("address");
-    const addressValue=addressInput.value.trim();
-    const errorMessage=addressInput.nextElementSibling;
-    if(addressValue===""){
-        errorMessage.innerText="This field is required.";
-        addressInput.style.borderColor="red";
-        return false;
-    }else{
-        errorMessage.innerText="";
-        addressInput.style.borderColor="#5cb85c";
-        return true;
-    }
-}
 function handleError(errorMessage,Input){
     errorMessage.innerText = "This field is required.";
     Input.style.borderColor = "red";
@@ -227,6 +202,8 @@ function handleSuccess(errorMessage,Input){
     errorMessage.innerText = "";
     Input.style.borderColor = "#5cb85c";
 }
+
+
 function validFirstName(){
     const nameInput=document.getElementById("firstName");
     const nameValue=nameInput.value.trim();
@@ -374,6 +351,18 @@ function validateCity(){
         return false;
     }else{
         handleSuccess(errorMessage,cityInput)
+        return true;
+    }
+}
+function validateAdress(){
+    const addressInput=document.getElementById("address");
+    const addressValue=addressInput.value.trim();
+    const errorMessage=addressInput.nextElementSibling;
+    if(addressValue===""){
+        handleError(errorMessage,addressInput);
+        return false;
+    }else{
+        handleSuccess(errorMessage,addressInput);
         return true;
     }
 }
