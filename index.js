@@ -1,3 +1,4 @@
+let editId=-1;
 let formData = [
     {
         firstName:"Sourabh",
@@ -52,36 +53,6 @@ let formData = [
         password:"Deepanshu@123" 
     }
 ];
-
-function sortBy(event){
-    const choiceId=event.target.options[event.target.selectedIndex].id;
-    const field=event.target.value;
-    const tableBody=document.getElementById("tbody");
-    tableBody.innerHTML="";
-    switch(choiceId){
-        case "FNA-Z":
-        case "LNA-Z":
-        case "CityA-Z":
-            formData.sort((a,b)=> a[field].localeCompare(b[field]));
-            break;
-        case "FNZ-A":
-        case "LNZ-A":
-        case "CityZ-A":
-            formData.sort((a,b)=>b[field].localeCompare(a[field]));
-            break;
-        case "DOBO-Y":
-            formData.sort((a, b) => {
-            return new Date(a.DOB) - new Date(b.DOB);
-            });
-            break;
-        case "DOBY-O":
-            formData.sort((a, b) => {
-            return new Date(b.DOB) - new Date(a.DOB);
-            });
-            break;
-    }
-    renderData();
-}
 function renderData(){
     formData.forEach((element ,index)=>{
         const table = document.getElementById("tbody");
@@ -113,8 +84,36 @@ function renderData(){
 window.onload=function(){
     renderData();
 }
+function sortBy(event){
+    const choiceId=event.target.options[event.target.selectedIndex].id;
+    const field=event.target.value;
+    const tableBody=document.getElementById("tbody");
+    tableBody.innerHTML="";
+    switch(choiceId){
+        case "FNA-Z":
+        case "LNA-Z":
+        case "CityA-Z":
+            formData.sort((a,b)=> a[field].localeCompare(b[field]));
+            break;
+        case "FNZ-A":
+        case "LNZ-A":
+        case "CityZ-A":
+            formData.sort((a,b)=>b[field].localeCompare(a[field]));
+            break;
+        case "DOBO-Y":
+            formData.sort((a, b) => {
+            return new Date(a.DOB) - new Date(b.DOB);
+            });
+            break;
+        case "DOBY-O":
+            formData.sort((a, b) => {
+            return new Date(b.DOB) - new Date(a.DOB);
+            });
+            break;
+    }
+    renderData();
+}
 const form = document.getElementById('form1');
-let editId=-1;
 form.addEventListener('submit', (e) => {
     const submitButton=document.getElementById("submitButton");
     e.preventDefault();
