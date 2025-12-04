@@ -219,14 +219,21 @@ function validateAdress(){
         return true;
     }
 }
+function handleError(errorMessage,Input){
+    errorMessage.innerText = "This field is required.";
+    Input.style.borderColor = "red";
+}
+function handleSuccess(errorMessage,Input){
+    errorMessage.innerText = "";
+    Input.style.borderColor = "#5cb85c";
+}
 function validFirstName(){
     const nameInput=document.getElementById("firstName");
     const nameValue=nameInput.value.trim();
     const errorMessage=nameInput.nextElementSibling;
     const namePattern=/^[A-Za-z]+$/;
     if(nameValue === ""){
-        errorMessage.innerText = "This field is required.";
-        nameInput.style.borderColor = "red";
+        handleError(errorMessage,nameInput);
         return false;
     }
     else if(!namePattern.test(nameValue)){ 
@@ -235,8 +242,7 @@ function validFirstName(){
         return false;
     }
     else{
-        errorMessage.innerText = "";
-        nameInput.style.borderColor = "#5cb85c";
+        handleSuccess(errorMessage,nameInput)
         return true;
     }
 }
@@ -246,8 +252,7 @@ function validLastName(){
     const errorMessage=nameInput.nextElementSibling;
     const namePattern=/^[A-Za-z]+$/;
     if(nameValue === ""){
-        errorMessage.innerText = "This field is required.";
-        nameInput.style.borderColor = "red";
+        handleError(errorMessage,nameInput);
         return false;
     }
     else if(!namePattern.test(nameValue)){ 
@@ -256,8 +261,7 @@ function validLastName(){
         return false;
     }
     else{
-        errorMessage.innerText = "";
-        nameInput.style.borderColor = "#5cb85c";
+        handleSuccess(errorMessage,nameInput);
         return true;
     }
 }
@@ -267,8 +271,7 @@ function validateEmail(){
     const errorMessage=document.querySelector(".email .error-message");
     const emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
     if(emailValue === ""){
-        errorMessage.innerText = "This field is required.";
-        emailInput.style.borderColor = "red";
+        handleError(errorMessage,emailInput);
         return false;
     }
     if(!emailPattern.test(emailValue)){
@@ -276,19 +279,17 @@ function validateEmail(){
         emailInput.style.borderColor = "red";
         return false;
     }else{
-        errorMessage.innerText = "";
-        emailInput.style.borderColor = "#5cb85c";
+        handleSuccess(errorMessage,emailInput)
         return true;
     }
 }
-
 function validatePhone(){
     const phoneInput=document.getElementById("phone");
     const phoneValue = phoneInput.value.trim();
+    const errorMessage=phoneInput.nextElementSibling;
     const phonePattern = /^\d{10}$/;
     if(phoneValue === ""){
-        phoneInput.nextElementSibling.innerText = "This field is required.";
-        phoneInput.style.borderColor = "red";
+        handleError(errorMessage,phoneInput)
         return false;
     }
     if(!phonePattern.test(phoneValue)){
@@ -296,8 +297,7 @@ function validatePhone(){
         phoneInput.style.borderColor = "red";
         return false;
     }else{
-        phoneInput.nextElementSibling.innerText = "";
-        phoneInput.style.borderColor = "#5cb85c";
+        handleSuccess(errorMessage,phoneInput)
         return true;
     }
 }
@@ -370,12 +370,10 @@ function validateCity(){
     const cityValue=cityInput.value.trim();
     const errorMessage=document.querySelector(".city .error-message");
     if(cityValue===""){
-        errorMessage.innerText="This field is required.";
-        cityInput.style.borderColor="red";
+        handleError(errorMessage,cityInput);
         return false;
     }else{
-        errorMessage.innerText="";
-        cityInput.style.borderColor="#5cb85c";
+        handleSuccess(errorMessage,cityInput)
         return true;
     }
 }
@@ -386,8 +384,7 @@ function validateRightPassword(){
 
     const passwordPattern=/^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{8,}$/;
     if(passwordValue===""){
-        errorMessage.innerText="This field is required.";
-        passwordInput.style.borderColor="red";
+        handleError(errorMessage,passwordInput)
         return false;
     }
     if(!passwordPattern.test(passwordValue)){
@@ -395,8 +392,7 @@ function validateRightPassword(){
         passwordInput.style.borderColor="red";
         return false;
     }else{
-        errorMessage.innerText="";
-        passwordInput.style.borderColor="#5cb85c";
+        handleSuccess(errorMessage,passwordInput)
         return true;
     }
 }
@@ -405,8 +401,7 @@ function validatePassword(){
     const confirmPasswordInput=document.getElementById("confirmPassword");
     const errorMessage=confirmPasswordInput.nextElementSibling;
     if(passwordInput.value===""){
-        errorMessage.innerText="This field is required.";
-        confirmPasswordInput.style.borderColor="red";
+        handleError(errorMessage,passwordInput)
         errorMessage.style.color="red";
         return false;
     }
