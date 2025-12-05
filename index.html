@@ -76,15 +76,21 @@
                 </div>
                 <div class="Interests">
                     <div class="interestsC">
-                        <label class="Glabel" for="">Interests<span class="mandatory">*</span>:</label>
-                        <input   onclick="validateInterests()" type="checkbox" name="interest1" id="sports" value="sports">
-                        <label class="left" for="sports">Sports</label>
-                        <input class="gap" onclick="validateInterests()" type="checkbox" name="interest2" id="music" value="music">
-                        <label class="left" for="music">Music</label>
-                        <input class="gap" onclick="validateInterests()" type="checkbox" name="interest3" id="movies" value="movies">
-                        <label class="left" for="movies">Movies</label>
-                        <input class="gap" onclick="validateInterests()" type="checkbox" name="interest4" id="politics" value="politics">
-                        <label class="left"  for="politics">Politics</label>
+                        <label class="Glabel" >Interests<span class="mandatory">*</span>:</label>
+                        <div class="intContainer">
+                            <div class="part1">
+                                <input   onclick="validateInterests()" type="checkbox" name="interest1" id="sports" value="sports">
+                                <label class="left" for="sports">Sports</label>
+                                <input class="gap" onclick="validateInterests()" type="checkbox" name="interest2" id="music" value="music">
+                                <label class="left" for="music">Music</label>
+                            </div>
+                            <div class="part2">
+                                <input class="gap" onclick="validateInterests()" type="checkbox" name="interest3" id="movies" value="movies">
+                                <label class="left" for="movies">Movies</label>
+                                <input class="gap" onclick="validateInterests()" type="checkbox" name="interest4" id="politics" value="politics">
+                                <label class="left"  for="politics">Politics</label>
+                            </div>
+                        </div>
                     </div>
                     <p class="error-message"></p>
                 </div>

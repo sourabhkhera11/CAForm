@@ -149,7 +149,7 @@ th{
 .tableContainer{
     width: 100%;
     height: 100%;
-    overflow: auto;
+    overflow-x: auto;
 }
 tr:nth-child(even){
     background-color: #ebebeb;
@@ -224,7 +224,7 @@ th{
  .actionRow{
     display: flex;
     gap: 20px;
-    justify-content: end;
+    justify-content: start
  }
  .filterBy{
     /* border: #9c9a9a 0.1px solid; */
@@ -248,7 +248,7 @@ input[type="checkbox"] {
     background-color: #fff;
     padding: 20px;
     border-radius: 5px;
-    right: 291px;
+    left: 45px;
     top: 150px;
     display: none;
 }
@@ -262,4 +262,66 @@ input[type="checkbox"] {
 }
 .filterBar:hover{
     display: block;
+}
+.intContainer{
+    display: flex;
+}
+@media screen and (max-width:768px) {
+    
+    .container1,.container2{
+        width: 80%;
+        padding: 20px;
+    }
+    .heading,.accountHeading{
+        font-size: 30px;
+    }
+    .sec1, .sec2, .sec3, .sec4 {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+    }
+    .form{
+        gap: 15px;
+    }
+    .formSection{
+        margin-top: 45px;
+    }
+    #Male{
+        margin-left: 30px;
+    }
+    #sports{
+        margin-left: 30px;
+    }
+    .part1,.part2{
+        display: flex;
+    }
+    .intContainer{
+        flex-direction: column;
+    }
+    .actionRow{
+        flex-direction: column;
+        gap: 0px;
+    }
+    .filterBy{
+        margin-top: 10px;
+        padding: 0px;
+    }
+    .filterBar{
+        /* right: 173px; */
+        top: 111px;
+        left: 2px;
+    }
+  /* .container2,.formSection{
+  max-width: 95%;
+  margin: auto; */
+}
+@media screen and (min-width:768px) and (max-width:1024px) {
+  .container2,.formSection{
+    width: 650px;
+}
+}
+@media screen and (min-width:1025px) and (max-width:1323px) {
+  .container2,.formSection{
+    width: 1000px;
+}
 }
