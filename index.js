@@ -1,6 +1,6 @@
 let editId=-1;
 const form = document.getElementById('form1');
-// convert interest in array
+// convert interest in array->Done 
 let formData = [
     {   
         id:1,
@@ -9,8 +9,7 @@ let formData = [
         email:"sourabhkhera11@gmail.com",
         phone:"9876543210",
         gender:"male",
-        interest2:"music",
-        interest1:"sports",
+        interests:["music","sports"],
         DOB:"2003-10-31",
         city:"New Delhi",
         address:"123, ABC Street, New Delhi",
@@ -23,8 +22,7 @@ let formData = [
         email:"abhinavgoyal@gmail.com",
         phone:"8700134518",
         gender:"male",
-        interest2:"music",
-        interest3:"movies",
+        interests:["music","movies"],
         DOB:"2003-10-29",
         city:"Mumbai",
         address:"B Block Noida",
@@ -37,8 +35,7 @@ let formData = [
         email:"tushar@gmail.com",
         phone:"9834567012",
         gender:"female",
-        interest2:"music",
-        interest4:"politics",
+        interests:["music","politics"],
         DOB:"2002-12-02",
         city:"Chennai",
         address:"XYZ Colony Shahdara",
@@ -51,8 +48,7 @@ let formData = [
         email:"deepanshu@gmail.com",
         phone:"8834567012",
         gender:"male",
-        interest1:"sports",
-        interest4:"politics",
+        interests:["sports","politics"],
         DOB:"2004-03-21",
         city:"Chennai",
         address:"PQR Colony Uttam Nagar",
@@ -70,18 +66,12 @@ function renderData(formData){
         
         clone.id = element.id;
         clone.style.display = 'table-row'; 
-        const Interests = [
-            element.interest1,
-            element.interest2,
-            element.interest3,
-            element.interest4
-        ].filter(Boolean).join(", ");
         clone.querySelector(".firstNamee").innerText = element.firstName.trim();
         clone.querySelector(".lastNamee").innerText = element.lastName.trim();
         clone.querySelector(".emaill").innerText = element.email.trim();
         clone.querySelector(".phonee").innerText = element.phone.trim();
         clone.querySelector(".genderr").innerText = element.gender;
-        clone.querySelector(".Interestss").innerText = Interests;
+        clone.querySelector(".Interestss").innerText = element.interests.toString();
         clone.querySelector(".dobb").innerText = element.DOB.trim();  
         clone.querySelector(".cityy").innerText = element.city.trim();
         clone.querySelector(".addresss").innerText = element.address.trim();
@@ -125,20 +115,14 @@ function sortBy(event){
     renderData(formData);
 }
 // good
+//Inside the table manipulation
 function renderRow(row,entry){
-    //Inside the table manipulation
-    const Interests = [
-            entry.interest1,
-            entry.interest2,
-            entry.interest3,
-            entry.interest4
-        ].filter(Boolean).join(", ");
     row.querySelector(".firstNamee").innerText = entry.firstName.trim();
     row.querySelector(".lastNamee").innerText = entry.lastName.trim();
     row.querySelector(".emaill").innerText = entry.email.trim();
     row.querySelector(".phonee").innerText = entry.phone.trim();
     row.querySelector(".genderr").innerText = entry.gender;
-    row.querySelector(".Interestss").innerText = Interests;
+    row.querySelector(".Interestss").innerText = entry.interests.toString();
     row.querySelector(".dobb").innerText = entry.DOB.trim();  
     row.querySelector(".cityy").innerText = entry.city.trim();
     row.querySelector(".addresss").innerText = entry.address.trim();
@@ -152,18 +136,22 @@ function formSubmit(e){
         const data = new FormData(form);
         let entry = {};
         console.log(data.entries());
+        let interests=[];
+        const names=["interest1","interest2","interest3","interest4"];
         for (let [name, value] of data.entries()) {
-            entry[name] = value;
+            if(names.includes(name)){
+                interests.push(value);
+            }
+            else{
+                entry[name] = value;
+            }
         }
-        // dont check on innerText
-        if(submitButton.innerText==="Save Changes" && editId!=-1){
-            alert("Details updated successfully!");
+        entry["interests"]=interests;
+        // dont check on innerText->Done
+        if(editId!=-1){
             submitButton.innerText="Submit";
             document.getElementById("discardButton").style.display="none";
             const row=document.getElementById(editId);
-            // rendering should be done after data insertion/updation
-            renderRow(row,entry);//Inside table UI
-            // const editEntry=formData[editId];
             const editEntry=formData.find(item => item["id"]==editId);
             //Inside the array
             editEntry.firstName= entry.firstName.trim();
@@ -175,31 +163,25 @@ function formSubmit(e){
             editEntry.city= entry.city.trim();
             editEntry.address= entry.address.trim();
             editEntry.password= entry.password.trim();
-            const intNames=['interest1','interest2','interest3','interest4'];
-            for(let intt of intNames){
-                if(entry.intt){
-                    formData[intt]=entry.intt
-                }
-                else{
-                    formData[intt]=""
-                }
-            }
+            editEntry.interests=entry.interests;
             editId=-1;
+            // rendering should be done after data insertion/updation->Done
+            renderRow(row,entry);//Inside table UI
+            alert("Details updated successfully!");
         }
         else{
-            // alert should be done after data updation
             entry["id"]=Date.now();
             formData.push(entry);
             const table = document.getElementById('tbody');
             const original = document.getElementById('-2');
             const clone = original.cloneNode(true);
-            
             clone.id = entry.id;
             clone.style.display = 'table-row'; 
             // try making a single function to update table or a row
             renderRow(clone,entry);
             table.appendChild(clone);
             console.log(formData);
+            // alert should be done after data updation->Done              
             alert("Form submitted successfully!");
         }
         console.log(formData);
@@ -437,8 +419,6 @@ function deleteRow(event){
 }
 
 function editRow(event){
-    // scroll after the data is updated in form
-    window.scrollTo({top:0,behavior:"smooth"});
     document.getElementById("discardButton").style.display="block";
     const rowid=event.target.closest("tr").id;
     editId=rowid;
@@ -456,14 +436,15 @@ function editRow(event){
     document.querySelector(`input[name="gender"][value="${entry.gender}"]`).checked = true;
     const interests = ['interest1', 'interest2', 'interest3', 'interest4'];
     interests.forEach(interest => {
-        if (entry[interest]) {
-            document.querySelector(`input[name="${interest}"][value="${entry[interest]}"]`).checked = true;
-        } else {
-            document.querySelector(`input[name="${interest}"]`).checked = false;
-        }
+        document.querySelector(`input[name="${interest}"]`).checked = false;
+    });
+    entry.interests.forEach(item=>{
+        document.getElementById(item).checked=true;
     });
     const submitButton=document.getElementById("submitButton");
     submitButton.innerText="Save Changes";
+    // scroll after the data is updated in form->Done
+    window.scrollTo({top:0,behavior:"smooth"});
 }
 function discard(){
     form.reset();
