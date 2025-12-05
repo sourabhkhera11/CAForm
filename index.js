@@ -1,5 +1,6 @@
 let editId=-1;
 const form = document.getElementById('form1');
+// convert interest in array
 let formData = [
     {
         firstName:"Sourabh",
@@ -54,6 +55,7 @@ let formData = [
         password:"Deepanshu@123" 
     }
 ];
+// put table and original
 function renderData(formData){
     formData.forEach((element ,index)=>{
         const table = document.getElementById("tbody");
@@ -78,6 +80,7 @@ function renderData(formData){
         clone.querySelector(".cityy").innerText = element.city.trim();
         clone.querySelector(".addresss").innerText = element.address.trim();
         clone.querySelector(".passwordd").innerText = element.password.trim();
+        // try adding both delete and edit buttons here by using setarrtibute property
         
         table.appendChild(clone);
     })
@@ -85,6 +88,7 @@ function renderData(formData){
 window.onload=function(){
     renderData(formData);
 }
+// good
 function sortBy(event){
     const choiceId=event.target.options[event.target.selectedIndex].id;
     const field=event.target.value;
@@ -114,6 +118,7 @@ function sortBy(event){
     }
     renderData(formData);
 }
+// good
 function renderRow(row,entry){
     const Interests = [
             entry.interest1,
@@ -135,6 +140,7 @@ function renderRow(row,entry){
 function formSubmit(e){
     const submitButton=document.getElementById("submitButton");
     e.preventDefault();
+    // try creating a single function for all validations
     if(validFirstName() && validLastName() && validateEmail() && validatePhone() && validateGender() && validateInterests() && validateDob() && validateCity() && validateAdress() && validateRightPassword() && validatePassword()){
         const data = new FormData(form);
         let entry = {};
@@ -143,11 +149,13 @@ function formSubmit(e){
             entry[name] = value;
         }
         console.log(entry);
+        // dont check on innerText
         if(submitButton.innerText==="Save Changes" && editId!=-1){
             alert("Details updated successfully!");
             submitButton.innerText="Submit";
             document.getElementById("discardButton").style.display="none";
             const row=document.getElementById(editId);
+            // rendering should be done after data insertion/updation
             renderRow(row,entry);
             const editEntry=formData[editId];
             editEntry.firstName= entry.firstName.trim();
@@ -171,6 +179,7 @@ function formSubmit(e){
             editId=-1;
         }
         else{
+            // alert should be done after data updation
             alert("Form submitted successfully!");
             formData.push(entry);
             const table = document.getElementById('tbody');
@@ -179,10 +188,12 @@ function formSubmit(e){
         
             clone.id = formData.length - 1;
             clone.style.display = 'table-row'; 
+            // try making a single function to update table or a row
             renderRow(clone,entry);
             table.appendChild(clone);
         }
         form.reset();
+        // see if there is any better solution for this
         const fields = document.querySelectorAll('.fields');
         fields.forEach(field => {
             field.style.borderColor = '';
@@ -193,6 +204,7 @@ function formSubmit(e){
         confirmPassword.innerText='';
     }
 };
+// combine these two
 function handleError(errorMessage,Input){
     errorMessage.innerText = "This field is required.";
     Input.style.borderColor = "red";
@@ -201,6 +213,7 @@ function handleSuccess(errorMessage,Input){
     errorMessage.innerText = "";
     Input.style.borderColor = "#5cb85c";
 }
+// create single functions for validations
 function validFirstName(){
     const nameInput=document.getElementById("firstName");
     const nameValue=nameInput.value.trim();
@@ -412,6 +425,7 @@ function deleteRow(event){
 }
 
 function editRow(event){
+    // scroll after the data is updated in form
     window.scrollTo({top:0,behavior:"smooth"});
     document.getElementById("discardButton").style.display="block";
     const rowid=event.target.closest("tr").id;
@@ -447,6 +461,7 @@ function discard(){
     document.getElementById("discardButton").style.display="none";
 
 }
+// try rewamping this
 function filterBy(){
     const male=document.getElementById("maleF").checked;
     const female=document.getElementById("femaleF").checked;
