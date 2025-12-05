@@ -1,5 +1,8 @@
 let editId=-1;
+//Single Time accessing the required data 
 const form = document.getElementById('form1');
+const tbody = document.getElementById("tbody");
+const original = document.getElementById('-2');
 // convert interest in array->Done 
 let formData = [
     {   
@@ -55,67 +58,8 @@ let formData = [
         password:"Deepanshu@123" 
     }
 ];
-// put table and original
-//renderData : Creating New Clone in the table
-//Only for the initial ones 
-function renderData(formData){
-    formData.forEach((element)=>{
-        const table = document.getElementById("tbody");
-        const original = document.getElementById('-2');
-        const clone = original.cloneNode(true);
-        
-        clone.id = element.id;
-        clone.style.display = 'table-row'; 
-        clone.querySelector(".firstNamee").innerText = element.firstName.trim();
-        clone.querySelector(".lastNamee").innerText = element.lastName.trim();
-        clone.querySelector(".emaill").innerText = element.email.trim();
-        clone.querySelector(".phonee").innerText = element.phone.trim();
-        clone.querySelector(".genderr").innerText = element.gender;
-        clone.querySelector(".Interestss").innerText = element.interests.toString();
-        clone.querySelector(".dobb").innerText = element.DOB.trim();  
-        clone.querySelector(".cityy").innerText = element.city.trim();
-        clone.querySelector(".addresss").innerText = element.address.trim();
-        clone.querySelector(".passwordd").innerText = element.password.trim();
-        // try adding both delete and edit buttons here by using setarrtibute property
-        
-        table.appendChild(clone);
-    })
-}
-window.onload=function(){
-    renderData(formData);
-}
 // good
-function sortBy(event){
-    const choiceId=event.target.options[event.target.selectedIndex].id;
-    const field=event.target.value;
-    const tableBody=document.getElementById("tbody");
-    tableBody.innerHTML="";
-    switch(choiceId){
-        case "FNA-Z":
-        case "LNA-Z":
-        case "CityA-Z":
-            formData.sort((a,b)=> a[field].localeCompare(b[field]));
-            break;
-        case "FNZ-A":
-        case "LNZ-A":
-        case "CityZ-A":
-            formData.sort((a,b)=>b[field].localeCompare(a[field]));
-            break;
-        case "DOBO-Y":
-            formData.sort((a, b) => {
-            return new Date(a.DOB) - new Date(b.DOB);
-            });
-            break;
-        case "DOBY-O":
-            formData.sort((a, b) => {
-            return new Date(b.DOB) - new Date(a.DOB);
-            });
-            break;
-    }
-    renderData(formData);
-}
-// good
-//Inside the table manipulation
+//Tbody manipulation-> renderRow->Single Row
 function renderRow(row,entry){
     row.querySelector(".firstNamee").innerText = entry.firstName.trim();
     row.querySelector(".lastNamee").innerText = entry.lastName.trim();
@@ -127,6 +71,20 @@ function renderRow(row,entry){
     row.querySelector(".cityy").innerText = entry.city.trim();
     row.querySelector(".addresss").innerText = entry.address.trim();
     row.querySelector(".passwordd").innerText = entry.password.trim();
+}
+//Render the whole tbody
+function renderData(formData){
+    formData.forEach((element)=>{
+        const clone = original.cloneNode(true);
+        clone.id = element.id;
+        clone.style.display = 'table-row'; 
+        renderRow(clone,element);
+        tbody.appendChild(clone);
+    })
+}
+//Initial data 
+window.onload=function(){
+    renderData(formData);
 }
 function formSubmit(e){
     const submitButton=document.getElementById("submitButton");
@@ -166,7 +124,7 @@ function formSubmit(e){
             editEntry.interests=entry.interests;
             editId=-1;
             // rendering should be done after data insertion/updation->Done
-            renderRow(row,entry);//Inside table UI
+            renderRow(row,entry);
             alert("Details updated successfully!");
         }
         else{
@@ -177,7 +135,6 @@ function formSubmit(e){
             const clone = original.cloneNode(true);
             clone.id = entry.id;
             clone.style.display = 'table-row'; 
-            // try making a single function to update table or a row
             renderRow(clone,entry);
             table.appendChild(clone);
             console.log(formData);
@@ -197,14 +154,19 @@ function formSubmit(e){
         confirmPassword.innerText='';
     }
 };
-// combine these two
-function handleError(errorMessage,Input){
-    errorMessage.innerText = "This field is required.";
-    Input.style.borderColor = "red";
-}
-function handleSuccess(errorMessage,Input){
-    errorMessage.innerText = "";
-    Input.style.borderColor = "#5cb85c";
+// combine these two->Done
+function validationStyling(errorMessage,Input,status,message="This field is required."){
+    //1->Success and 0-> failure
+    if(status==0){
+        errorMessage.innerText = message;
+        Input.style.borderColor = "red";
+        return false;
+    }
+    else{
+        errorMessage.innerText = "";
+        Input.style.borderColor = "#5cb85c";
+        return true;
+    }
 }
 // create single functions for validations
 function validFirstName(){
@@ -213,17 +175,13 @@ function validFirstName(){
     const errorMessage=nameInput.nextElementSibling;
     const namePattern=/^[A-Za-z]+$/;
     if(nameValue === ""){
-        handleError(errorMessage,nameInput);
-        return false;
+        return validationStyling(errorMessage,nameInput,0);
     }
     else if(!namePattern.test(nameValue)){ 
-        errorMessage.innerText = "Name should contain only alphabets.";
-        nameInput.style.borderColor = "red";
-        return false;
+        return validationStyling(errorMessage,nameInput,0,"Name should contain only alphabets.");
     }
     else{
-        handleSuccess(errorMessage,nameInput)
-        return true;
+        return validationStyling(errorMessage,nameInput,1);
     }
 }
 function validLastName(){
@@ -232,17 +190,13 @@ function validLastName(){
     const errorMessage=nameInput.nextElementSibling;
     const namePattern=/^[A-Za-z]+$/;
     if(nameValue === ""){
-        handleError(errorMessage,nameInput);
-        return false;
+        return validationStyling(errorMessage,nameInput,0);
     }
     else if(!namePattern.test(nameValue)){ 
-        errorMessage.innerText = "Name should contain only alphabets.";
-        nameInput.style.borderColor = "red";
-        return false;
+        return validationStyling(errorMessage,nameInput,0,"Name should contain only alphabets.");
     }
     else{
-        handleSuccess(errorMessage,nameInput);
-        return true;
+        return validationStyling(errorMessage,nameInput,1);
     }
 }
 function validateEmail(){
@@ -251,16 +205,13 @@ function validateEmail(){
     const errorMessage=document.querySelector(".email .error-message");
     const emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
     if(emailValue === ""){
-        handleError(errorMessage,emailInput);
-        return false;
+        return validationStyling(errorMessage,emailInput,0);
     }
     if(!emailPattern.test(emailValue)){
-        errorMessage.innerText = "Please enter a valid email address.";
-        emailInput.style.borderColor = "red";
-        return false;
+        return validationStyling(errorMessage,emailInput,0,"Please enter a valid email address.");
+        
     }else{
-        handleSuccess(errorMessage,emailInput)
-        return true;
+        return validationStyling(errorMessage,emailInput,1)
     }
 }
 function validatePhone(){
@@ -269,16 +220,12 @@ function validatePhone(){
     const errorMessage=phoneInput.nextElementSibling;
     const phonePattern = /^\d{10}$/;
     if(phoneValue === ""){
-        handleError(errorMessage,phoneInput)
-        return false;
+        return validationStyling(errorMessage,phoneInput,0);
     }
     if(!phonePattern.test(phoneValue)){
-        phoneInput.nextElementSibling.innerText = "Please enter a valid 10-digit phone number.";
-        phoneInput.style.borderColor = "red";
-        return false;
+        return validationStyling(errorMessage,phoneInput,0,"Please enter a valid 10-digit phone number.");
     }else{
-        handleSuccess(errorMessage,phoneInput)
-        return true;
+        return validationStyling(errorMessage,phoneInput,1)
     }
 }
 function validateGender() {
@@ -344,17 +291,14 @@ function validateDob() {
     dobInput.style.borderColor = "#5cb85c";
     return true;
 }
-
 function validateCity(){
     const cityInput=document.getElementById("city");
     const cityValue=cityInput.value.trim();
     const errorMessage=document.querySelector(".city .error-message");
     if(cityValue===""){
-        handleError(errorMessage,cityInput);
-        return false;
+        return validationStyling(errorMessage,cityInput,0);
     }else{
-        handleSuccess(errorMessage,cityInput)
-        return true;
+        return validationStyling(errorMessage,cityInput,1);
     }
 }
 function validateAdress(){
@@ -362,11 +306,9 @@ function validateAdress(){
     const addressValue=addressInput.value.trim();
     const errorMessage=addressInput.nextElementSibling;
     if(addressValue===""){
-        handleError(errorMessage,addressInput);
-        return false;
+        return validationStyling(errorMessage,addressInput,0);
     }else{
-        handleSuccess(errorMessage,addressInput);
-        return true;
+        return validationStyling(errorMessage,addressInput,1);
     }
 }
 function validateRightPassword(){
@@ -376,16 +318,12 @@ function validateRightPassword(){
 
     const passwordPattern=/^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{8,}$/;
     if(passwordValue===""){
-        handleError(errorMessage,passwordInput)
-        return false;
+        return validationStyling(errorMessage,passwordInput,0);
     }
     if(!passwordPattern.test(passwordValue)){
-        errorMessage.innerText="Password must be at least 8 characters long and include uppercase, lowercase, number, and special character.";
-        passwordInput.style.borderColor="red";
-        return false;
+        return validationStyling(errorMessage,passwordInput,0,"Password must be at least 8 characters long and include uppercase, lowercase, number, and special character.");
     }else{
-        handleSuccess(errorMessage,passwordInput)
-        return true;
+        return validationStyling(errorMessage,passwordInput,1);
     }
 }
 function validatePassword(){
@@ -393,9 +331,7 @@ function validatePassword(){
     const confirmPasswordInput=document.getElementById("confirmPassword");
     const errorMessage=confirmPasswordInput.nextElementSibling;
     if(passwordInput.value===""){
-        handleError(errorMessage,passwordInput)
-        errorMessage.style.color="red";
-        return false;
+        return validationStyling(errorMessage,passwordInput,0);
     }
     if(passwordInput.value!==confirmPasswordInput.value){
         errorMessage.innerText="Passwords do not match.";
@@ -424,6 +360,7 @@ function editRow(event){
     editId=rowid;
     const row=document.getElementById(rowid);
     const entry=formData.find(item => item["id"]==rowid);
+    //Fill the data inside the input fields 
     document.getElementById("firstName").value=entry.firstName;
     document.getElementById("lastName").value=entry.lastName;
     document.getElementById("email").value=entry.email;
@@ -451,6 +388,36 @@ function discard(){
     document.getElementById("submitButton").innerHTML="Create Account";
     document.getElementById("discardButton").style.display="none";
 
+}
+// good
+function sortBy(event){
+    const choiceId=event.target.options[event.target.selectedIndex].id;
+    const field=event.target.value;
+    const tableBody=document.getElementById("tbody");
+    tableBody.innerHTML="";
+    switch(choiceId){
+        case "FNA-Z":
+        case "LNA-Z":
+        case "CityA-Z":
+            formData.sort((a,b)=> a[field].localeCompare(b[field]));
+            break;
+        case "FNZ-A":
+        case "LNZ-A":
+        case "CityZ-A":
+            formData.sort((a,b)=>b[field].localeCompare(a[field]));
+            break;
+        case "DOBO-Y":
+            formData.sort((a, b) => {
+            return new Date(a.DOB) - new Date(b.DOB);
+            });
+            break;
+        case "DOBY-O":
+            formData.sort((a, b) => {
+            return new Date(b.DOB) - new Date(a.DOB);
+            });
+            break;
+    }
+    renderData(formData);
 }
 // try rewamping this
 function filterBy(){

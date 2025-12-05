@@ -134,6 +134,7 @@ th{
     margin-top: 200px;
     margin-bottom: 200px;
     display: flex;
+    flex-direction: column;
     justify-content: center;
     align-items: center;
     background-color: #fff;
@@ -167,6 +168,11 @@ tr:nth-child(even){
 }
 .gap{
     margin-left: 30px;
+}
+.tableHeader{
+    display: flex;
+    flex-direction: column;
+    justify-content: start;
 }
 #dob,#city{
     color: #9c9a9a;
@@ -248,7 +254,7 @@ input[type="checkbox"] {
     background-color: #fff;
     padding: 20px;
     border-radius: 5px;
-    left: 45px;
+    left: 570px;
     top: 150px;
     display: none;
 }
@@ -311,14 +317,15 @@ input[type="checkbox"] {
         top: 111px;
         left: 2px;
     }
-  /* .container2,.formSection{
-  max-width: 95%;
-  margin: auto; */
 }
 @media screen and (min-width:768px) and (max-width:1024px) {
   .container2,.formSection{
     width: 650px;
 }
+.filterBar{
+        top: 153px;
+        left: 127px;
+    }
 }
 @media screen and (min-width:1025px) and (max-width:1323px) {
   .container2,.formSection{
