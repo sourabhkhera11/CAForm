@@ -2,7 +2,8 @@ let editId=-1;
 const form = document.getElementById('form1');
 // convert interest in array
 let formData = [
-    {
+    {   
+        id:1,
         firstName:"Sourabh",
         lastName:"Khera",
         email:"sourabhkhera11@gmail.com",
@@ -15,7 +16,8 @@ let formData = [
         address:"123, ABC Street, New Delhi",
         password:"Sourabh@123" 
     },
-    {
+    {   
+        id:2,
         firstName:"Abhinav",
         lastName:"Goyal",
         email:"abhinavgoyal@gmail.com",
@@ -28,7 +30,8 @@ let formData = [
         address:"B Block Noida",
         password:"Abhinav@123" 
     },
-    {
+    {   
+        id:3,
         firstName:"Tushar",
         lastName:"Verma",
         email:"tushar@gmail.com",
@@ -42,6 +45,7 @@ let formData = [
         password:"Tushar@123" 
     },
     {
+        id:4,
         firstName:"Deepanshu",
         lastName:"Punj",
         email:"deepanshu@gmail.com",
@@ -56,13 +60,15 @@ let formData = [
     }
 ];
 // put table and original
+//renderData : Creating New Clone in the table
+//Only for the initial ones 
 function renderData(formData){
-    formData.forEach((element ,index)=>{
+    formData.forEach((element)=>{
         const table = document.getElementById("tbody");
         const original = document.getElementById('-2');
         const clone = original.cloneNode(true);
         
-        clone.id = index;
+        clone.id = element.id;
         clone.style.display = 'table-row'; 
         const Interests = [
             element.interest1,
@@ -120,6 +126,7 @@ function sortBy(event){
 }
 // good
 function renderRow(row,entry){
+    //Inside the table manipulation
     const Interests = [
             entry.interest1,
             entry.interest2,
@@ -148,7 +155,6 @@ function formSubmit(e){
         for (let [name, value] of data.entries()) {
             entry[name] = value;
         }
-        console.log(entry);
         // dont check on innerText
         if(submitButton.innerText==="Save Changes" && editId!=-1){
             alert("Details updated successfully!");
@@ -156,8 +162,10 @@ function formSubmit(e){
             document.getElementById("discardButton").style.display="none";
             const row=document.getElementById(editId);
             // rendering should be done after data insertion/updation
-            renderRow(row,entry);
-            const editEntry=formData[editId];
+            renderRow(row,entry);//Inside table UI
+            // const editEntry=formData[editId];
+            const editEntry=formData.find(item => item["id"]==editId);
+            //Inside the array
             editEntry.firstName= entry.firstName.trim();
             editEntry.lastName= entry.lastName.trim();
             editEntry.email= entry.email.trim();
@@ -180,18 +188,21 @@ function formSubmit(e){
         }
         else{
             // alert should be done after data updation
-            alert("Form submitted successfully!");
+            entry["id"]=Date.now();
             formData.push(entry);
             const table = document.getElementById('tbody');
             const original = document.getElementById('-2');
             const clone = original.cloneNode(true);
-        
-            clone.id = formData.length - 1;
+            
+            clone.id = entry.id;
             clone.style.display = 'table-row'; 
             // try making a single function to update table or a row
             renderRow(clone,entry);
             table.appendChild(clone);
+            console.log(formData);
+            alert("Form submitted successfully!");
         }
+        console.log(formData);
         form.reset();
         // see if there is any better solution for this
         const fields = document.querySelectorAll('.fields');
@@ -421,7 +432,8 @@ function deleteRow(event){
     const rowid=event.target.closest("tr").id;
     const row=document.getElementById(rowid);
     row.remove();
-    delete formData[rowid];
+    formData=formData.filter(item=>item.id!= rowid);
+    console.log(formData);
 }
 
 function editRow(event){
@@ -431,9 +443,7 @@ function editRow(event){
     const rowid=event.target.closest("tr").id;
     editId=rowid;
     const row=document.getElementById(rowid);
-    const entry=formData[rowid];
-    console.log(entry);
-    console.log(entry.firstName);
+    const entry=formData.find(item => item["id"]==rowid);
     document.getElementById("firstName").value=entry.firstName;
     document.getElementById("lastName").value=entry.lastName;
     document.getElementById("email").value=entry.email;
