@@ -390,6 +390,7 @@ function discard(){
 
 }
 // good
+let tempArr=[...formData];
 function sortBy(event){
     const choiceId=event.target.options[event.target.selectedIndex].id;
     const field=event.target.value;
@@ -399,28 +400,29 @@ function sortBy(event){
         case "FNA-Z":
         case "LNA-Z":
         case "CityA-Z":
-            formData.sort((a,b)=> a[field].localeCompare(b[field]));
+            tempArr.sort((a,b)=> a[field].localeCompare(b[field]));
             break;
         case "FNZ-A":
         case "LNZ-A":
         case "CityZ-A":
-            formData.sort((a,b)=>b[field].localeCompare(a[field]));
+            tempArr.sort((a,b)=>b[field].localeCompare(a[field]));
             break;
         case "DOBO-Y":
-            formData.sort((a, b) => {
+            tempArr.sort((a, b) => {
             return new Date(a.DOB) - new Date(b.DOB);
             });
             break;
         case "DOBY-O":
-            formData.sort((a, b) => {
+            tempArr.sort((a, b) => {
             return new Date(b.DOB) - new Date(a.DOB);
             });
             break;
     }
-    renderData(formData);
+    renderData(tempArr);
 }
 // try rewamping this
 function filterBy(){
+    tempArr=[...formData]
     const male=document.getElementById("maleF").checked;
     const female=document.getElementById("femaleF").checked;
     const newDelhi=document.getElementById("newDelhiF").checked;
@@ -428,8 +430,6 @@ function filterBy(){
     const mumbai=document.getElementById("mumbaiF").checked;
     const chennai=document.getElementById("chennaiF").checked;
     const kolkata=document.getElementById("kolkataF").checked;
-
-    let tempArr=[...formData];
     if(male || female)[
         tempArr=tempArr.filter(item=>{
             if(male && item.gender==="male")return true;
